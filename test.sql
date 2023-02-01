@@ -1,0 +1,1 @@
+select * from Products p where p.typeID = 1
