@@ -65,7 +65,15 @@ public class Product {
     }
 
     public String getImg_path1() {
-        return img_path1;
+        String str = "./aroma-hnqt";
+        for (int i = 1; i < img_path1.length(); i++) {
+            if (img_path1.charAt(i) == '\\') {
+                str += "/";
+            } else {
+                str += img_path1.charAt(i) + "";
+            }
+        }
+        return str;
     }
 
     public String getImg_path2() {

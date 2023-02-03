@@ -4,12 +4,15 @@
  * and open the template in the editor.
  */
 
+import database.SQLserver;
 import java.io.IOException;
+import java.util.LinkedList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modules.Product;
 
 /**
  *
@@ -21,7 +24,10 @@ public class home extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       request.getRequestDispatcher("aroma-hnqt/index.html").forward(request, response);
+       SQLserver sql = new SQLserver();
+        LinkedList<Product> listMen =   sql.getMenPerfumeList();
+        request.setAttribute("list-men", listMen);
+       request.getRequestDispatcher("home.jsp").forward(request, response);
     }
     
 
