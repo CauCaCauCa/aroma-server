@@ -1,3 +1,10 @@
+<%-- 
+    Document   : showTypes
+    Created on : Feb 3, 2023, 1:24:20 PM
+    Author     : dotie
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="en">
 

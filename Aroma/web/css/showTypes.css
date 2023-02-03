@@ -1,3 +1,4 @@
+
 #head {
     width: 100%;
     height: 107.69px;
@@ -64,7 +65,7 @@ footer {
     width: 100%;
     height: 248px;
     background-color: rgb(49, 92, 76);
-    margin-top: 40rem;
+    margin-top: 5rem;
 }
 
 /* *config for mobile* */
@@ -144,7 +145,7 @@ main .row {
     margin-top: 1.5rem;
 }
 
-main .row  .col{
+main .row .col {
     box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
     padding: 0;
     border-radius: 5px;
@@ -157,16 +158,28 @@ main .row h5 {
     border-top-left-radius: 5px;
 }
 
-main  .detail{
+main .detail {
     height: fit-content;
+    padding-bottom: 2rem;
 }
+/* *********************** Products *************************** */
+#filter #search-brand, #filter #result{
+    padding: 1rem;
+}
+
+#filter #result{
+    font-size: large;
+}
+
+
 
 /* *********************** Products *************************** */
 
-#product #sort{
+#product #sort {
     padding: 0% 2rem;
 }
-#product #sort p{
+
+#product #sort p {
     font-weight: bold;
     display: inline-block;
     margin-right: 1rem;
@@ -181,13 +194,16 @@ main  .detail{
     left: 7rem;
 }
 
-.btn {
+/* *copy* */
+
+#product .btn {
     background-color: rgb(38, 115, 87);
     color: rgba(240, 248, 255, 0.845);
     font-size: 12px;
     font-weight: bold;
     width: 100%;
 }
+
 .card {
     margin-right: 1rem;
     margin-top: 2%;
@@ -201,10 +217,17 @@ main  .detail{
 .card-title:hover {
     color: blue;
 }
-#card1{
+
+#card1 {
     height: 120px;
     overflow: hidden;
 }
+
 a {
     text-decoration: none;
 }
+
+/* ***** */
+
+
+/* ******************************************************** */
