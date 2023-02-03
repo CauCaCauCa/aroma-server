@@ -209,7 +209,7 @@
                                 <img src="<%=list.get(i).getImg_path1()%>" class="card-img-top" alt="...">
                                 <div class="card-body" id="card1">
                                     <a href="#">
-                                        <h5 class="card-title"><%=list.get(i).getName()%></h5>
+                                        <h6 class="card-title"><%=list.get(i).getName()%></h6>
                                     </a>
                                     <p class="card-text"><%=list.get(i).getPrice()%>đ</p>
                                     <!--<a href="#" class="btn">Add to cart</a>-->

@@ -64,7 +64,7 @@ footer {
     width: 100%;
     height: 248px;
     background-color: rgb(49, 92, 76);
-    margin-top: 4rem;
+    margin-top: 40rem;
 }
 
 /* *config for mobile* */
@@ -122,3 +122,89 @@ footer {
 /* ************************************************** */
 /* ********************* MAIN *********************** */
 /* ************************************************** */
+main {
+    margin-top: 2.5rem;
+    padding: 0% 3%;
+}
+
+main #path {
+    border-radius: 5px;
+    padding: 0.2rem 2%;
+    background-color: rgba(236, 238, 237, 1);
+}
+
+#path p {
+    position: relative;
+    top: 0.5rem;
+    font-size: smaller;
+}
+
+main .row {
+    padding: 0% 0% 0% 6%;
+    margin-top: 1.5rem;
+}
+
+main .row  .col{
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    padding: 0;
+    border-radius: 5px;
+}
+
+main .row h5 {
+    background-color: rgba(236, 238, 237, 1);
+    padding: 1rem;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+main  .detail{
+    height: fit-content;
+}
+
+/* *********************** Products *************************** */
+
+#product #sort{
+    padding: 0% 2rem;
+}
+#product #sort p{
+    font-weight: bold;
+    display: inline-block;
+    margin-right: 1rem;
+}
+
+#product #more {
+    width: 4rem;
+    height: 4rem;
+    padding: 0;
+    position: relative;
+    top: 11rem;
+    left: 7rem;
+}
+
+.btn {
+    background-color: rgb(38, 115, 87);
+    color: rgba(240, 248, 255, 0.845);
+    font-size: 12px;
+    font-weight: bold;
+    width: 100%;
+}
+.card {
+    margin-right: 1rem;
+    margin-top: 2%;
+    width: 16rem;
+}
+
+.card-title {
+    color: black;
+}
+
+.card-title:hover {
+    color: blue;
+}
+#card1{
+    height: 120px;
+    overflow: hidden;
+}
+a {
+    text-decoration: none;
+}
