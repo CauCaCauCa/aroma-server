@@ -21,7 +21,7 @@
               integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 
         <!-- css customize -->
-        <link rel="stylesheet" href="./aroma-hnqt/css/index.css">
+        <link rel="stylesheet" href="./css/index.css">
 
     </head>
 
@@ -51,7 +51,7 @@
                     <div class="col-lg-2"></div>
 
                     <div class="col-lg-2" id="logo">
-                        <a href="./"> <img src="./aroma-hnqt/resrc/logo.png" alt="#" width="100%" height="auto"></a>
+                        <a href="./"> <img src="./resrc/logo.png" alt="#" width="100%" height="auto"></a>
                     </div>
 
                     <div class="col-lg-3"></div>
@@ -100,7 +100,7 @@
                         </div>
 
                         <div id="logo-mobile" class="col col-sm-4">
-                            <a href="./"> <img src="./aroma-hnqt/resrc/logo.png" alt="#"></a>
+                            <a href="./"> <img src="./resrc/logo.png" alt="#"></a>
                         </div>
 
                         <div id="login-mobile" class="col col-sm-4">
@@ -163,19 +163,19 @@
                 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="./aroma-hnqt/resrc/per1.jpg" class="d-block w-100" alt="banner-1">
+                            <img src="./resrc/per1.jpg" class="d-block w-100" alt="banner-1">
                         </div>
                         <div class="carousel-item">
-                            <img src="./aroma-hnqt/resrc/per2.jpg" class="d-block w-100" alt="banner-2">
+                            <img src="./resrc/per2.jpg" class="d-block w-100" alt="banner-2">
                         </div>
                         <div class="carousel-item">
-                            <img src="./aroma-hnqt/resrc/per3.jpg" class="d-block w-100" alt="banner-2">
+                            <img src="./resrc/per3.jpg" class="d-block w-100" alt="banner-2">
                         </div>
                         <div class="carousel-item">
-                            <img src="./aroma-hnqt/resrc/per4.jpg" class="d-block w-100" alt="banner-2">
+                            <img src="./resrc/per4.jpg" class="d-block w-100" alt="banner-2">
                         </div>
                         <div class="carousel-item">
-                            <img src="./aroma-hnqt/resrc/per5.jpg" class="d-block w-100" alt="banner-2">
+                            <img src="./resrc/per5.jpg" class="d-block w-100" alt="banner-2">
                         </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
@@ -244,7 +244,7 @@
                 
                                     <div class="row">
                                         <div class="card">
-                                            <img src="./aroma-hnqt/resrc/img1.png" class="card-img-top" alt="...">
+                                            <img src="./resrc/img1.png" class="card-img-top" alt="...">
                                             <div class="card-body">
                                                 <a href="#">
                                                     <h5 class="card-title">Card title</h5>
@@ -276,7 +276,7 @@
                 
                                     <div class="row">
                                         <div class="card">
-                                            <img src="./aroma-hnqt/resrc/img1.png" class="card-img-top" alt="...">
+                                            <img src="./resrc/img1.png" class="card-img-top" alt="...">
                                             <div class="card-body">
                                                 <a href="#">
                                                     <h5 class="card-title">Card title</h5>
