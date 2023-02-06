@@ -196,7 +196,9 @@
             <div id="product">
 
                 <div id="men">
-                    <h3 id="title">Men's perfume - Nước Hoa Nam</h3>
+                    <a href="showtype?type=men">
+                        <h3 id="title">Men's perfume - Nước Hoa Nam</h3>
+                    </a>
                     <div id="detail">
 
                         <div class="row">
@@ -212,7 +214,6 @@
                                         <h6 class="card-title"><%=list.get(i).getName()%></h6>
                                     </a>
                                     <p class="card-text"><%=list.get(i).getPrice()%>đ</p>
-                                    <!--<a href="#" class="btn">Add to cart</a>-->
                                 </div>
                                 <div class="card-body">
                                     <a href="#" class="btn">Add to cart</a>
@@ -224,7 +225,7 @@
 
 
                             <div class="card rounded-circle" id="more">
-                                <a href="#">
+                                <a href="showtype?type=men">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"
                                          class="bi bi-arrow-right-circle" viewBox="0 0 16 16" style="margin: 0.4rem;">
                                     <path fill-rule="evenodd"

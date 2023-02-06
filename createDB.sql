@@ -96,26 +96,14 @@ CREATE TABLE Products
 );
 go
 
-CREATE TABLE Cart
-( 
-	phone VARCHAR(13) NOT NULL,
-	proID VARCHAR(5) NOT NULL,
-	quantity int NOT NULL,
-	PRIMARY KEY (phone, proID),
-	FOREIGN KEY (phone) REFERENCES AccountCustomer(phone),
-	FOREIGN KEY (proID) REFERENCES Products(proID),
-);
-go	
-
 CREATE TABLE Invoice
 ( 
 	phone VARCHAR(13) NOT NULL,
 	proID VARCHAR(5) NOT NULL,
 	quantity int NOT NULL,
 	time_order datetime,
-	time_complete datetime,
 	isInvoice bit, --boolean
-	PRIMARY KEY (phone),
+	PRIMARY KEY (phone, proID, time_order),
 	FOREIGN KEY (phone) REFERENCES AccountCustomer(phone),
 	FOREIGN KEY (proID) REFERENCES Products(proID),
 );
@@ -170,4 +158,3 @@ insert Products(proID, name,brandID, price, quantity,intro, origin, typeID, img_
 insert Products(proID, name,brandID, price, quantity,intro, origin, typeID, img_path1, img_path2, img_path3) values ('P018', N'Versace Pour Homme 100ml',8, 1990000, 9999,N'Nước Hoa Nam Versace Pour Homme - Eau De Toilette (100ml) là sự pha trộn các thành phần tinh chất có nguồn gốc Địa Trung Hải với hỗn hợp hương thơm hàng đầu rất phù hợp cho nam giới ngày nay: đó là những người đàn ông tri thức và tự tin, năng động, mạnh mẽ và đầy đam mê, sống hài hòa với thế giới tự nhiên.', N'Ý', 1, N'./perfume/man/Versace Pour Homme/img1.png', N'./perfume/man/Versace Pour Homme/img2.png', N'./perfume/man/Versace Pour Homme/img3.png')
 insert Products(proID, name,brandID, price, quantity,intro, origin, typeID, img_path1, img_path2, img_path3) values ('P019', N'Versace Pour Homme Dylan Blue 100ml',8, 1990000, 9999,N'Nước Hoa Nam Versace Pour Homme Dylan Blue - Eau De Toilette (100ml) có hương thơm cây cỏ và gỗ của nó chứa đựng thành phần tươi mát của nước, cam bergamot xứ Calabria, bưởi và lá vả (lá sung) ở lớp hương đầu, phát triển hơn nữa với hương trung tâm của lá violet, gỗ giấy cói, cây hoắc hương, hạt tiêu đen và long diên hương.', N'Ý', 1, N'./perfume/man/Versace Pour Homme Dylan Blue/img1.png', N'./perfume/man/Versace Pour Homme Dylan Blue/img2.png', N'./perfume/man/Versace Pour Homme Dylan Blue/img3.png')
 insert Products(proID, name,brandID, price, quantity,intro, origin, typeID, img_path1, img_path2, img_path3) values ('P020', N'Yves Saint Laurent Y Eau de Parfum 100ml',10, 3200000, 9999,N'YSL Y Men EDP được giới thiệu lần đầu vào tháng 9 năm 2018, với thông điệp là một người đàn ông mặc sơ mi trắng cùng áo khoác màu đen, nam tính, mạnh mẽ và cuốn hút. Yves Saint Laurent Y thể hiện sự cân bằng giữa những nốt hương mạnh mẽ và nhẹ nhàng, nồng nàn và tươi mát.', N'Pháp', 1, N'./perfume/man/Yves Saint Laurent Y Eau de Parfum/img1.png', N'./perfume/man/Yves Saint Laurent Y Eau de Parfum/img2.png', N'./perfume/man/Yves Saint Laurent Y Eau de Parfum/img3.png')
-

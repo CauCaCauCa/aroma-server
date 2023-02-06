@@ -65,7 +65,7 @@ public class Product {
     }
 
     public String getImg_path1() {
-        String str = "./aroma-hnqt";
+        String str = "./";
         for (int i = 1; i < img_path1.length(); i++) {
             if (img_path1.charAt(i) == '\\') {
                 str += "/";

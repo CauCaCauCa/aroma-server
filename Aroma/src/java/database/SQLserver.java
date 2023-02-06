@@ -53,8 +53,13 @@ public class SQLserver {
         return false;
     }
 
-    public LinkedList<Product> getMenPerfumeList() {
-        String query = "select * from Products p where p.typeID = 1";
+    public LinkedList<Product> getPerfumeList(int type) {
+        String query;
+        if (type == 0) {
+            query = "select * from Products p";
+        } else {
+            query = "select * from Products p where p.typeID = " + type;
+        }
         LinkedList<Product> list = new LinkedList<>();
         try {
             Statement Statement = connection.createStatement();

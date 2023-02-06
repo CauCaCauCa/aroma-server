@@ -162,16 +162,16 @@ main .detail {
     height: fit-content;
     padding-bottom: 2rem;
 }
-/* *********************** Products *************************** */
-#filter #search-brand, #filter #result{
+/* *********************** Filter *************************** */
+#filter #search-brand{
     padding: 1rem;
 }
 
 #filter #result{
     font-size: large;
+    padding: 2rem;
+    color: rgba(49, 49, 49, 0.862);
 }
-
-
 
 /* *********************** Products *************************** */
 
@@ -196,7 +196,7 @@ main .detail {
 
 /* *copy* */
 
-#product .btn {
+.btn {
     background-color: rgb(38, 115, 87);
     color: rgba(240, 248, 255, 0.845);
     font-size: 12px;
