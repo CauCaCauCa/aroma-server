@@ -18,6 +18,9 @@ public class Product {
     private final String img_path2;
     private final String img_path3;
 
+    // only for cart
+    public int amount = 0;
+
     public Product(String proID, String name, String brandID, double price, int quantity, String intro, String origin, String typeID, String img_path1, String img_path2, String img_path3) {
         this.proID = proID;
         this.name = name;
@@ -46,6 +49,22 @@ public class Product {
 
     public double getPrice() {
         return price;
+    }
+    
+    public String getPriceS() {
+        String s = "";
+        int num = (int) price;
+        String priceS = num + "";
+        int count = 0;
+        for (int i = priceS.length() - 1; i >= 0; i--) {
+            if (count == 3) {
+                count = 0;
+                s = "." + s;
+            }
+            s = priceS.charAt(i) + s;
+            count++;
+        }
+        return s;
     }
 
     public int getQuantity() {
@@ -82,6 +101,10 @@ public class Product {
 
     public String getImg_path3() {
         return img_path3;
+    }
+
+    public int getAmount() {
+        return amount;
     }
 
     @Override

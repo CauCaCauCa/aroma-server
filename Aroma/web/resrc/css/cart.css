@@ -1,0 +1,205 @@
+#head {
+    width: 100%;
+    height: 107.69px;
+    background-color: rgb(49, 92, 76);
+}
+
+.radius-10 {
+    border-radius: 3px;
+}
+
+#basic-addon2 {
+    background-color: rgb(192, 202, 211);
+}
+
+#search {
+    margin-top: 40px;
+}
+
+#logo {
+    margin-top: 20px;
+}
+
+#login {
+    margin-top: 45px;
+}
+
+#login a {
+    text-decoration: none;
+    font-weight: bold;
+
+}
+
+#login a span:hover {
+    color: darkgrey;
+}
+
+#options {
+    width: 100%;
+    height: 44.31px;
+    background-color: rgb(217, 217, 217);
+}
+
+nav {
+    background-color: rgb(217, 217, 217);
+}
+
+
+#options .row {
+    margin-top: 10px;
+}
+
+#options .row p:hover {
+    font-weight: bold;
+}
+
+#search-mobile,
+#logo-mobile,
+#login-mobile {
+    display: none;
+}
+
+/* *copy footer here* */
+footer {
+    width: 100%;
+    height: 248px;
+    background-color: rgb(49, 92, 76);
+    margin-top: 8rem;
+}
+
+/* *config for mobile* */
+@media screen and (max-width: 991px) {
+    #head {
+        display: none;
+    }
+
+    #options {
+        top: 0;
+    }
+
+    #mobile {
+        width: 100%;
+        margin-left: 0px;
+    }
+
+    #button-mobile {
+        margin-top: 6px;
+    }
+
+    #button-mobile button {
+        width: 40px;
+        height: 35px;
+        padding: 0;
+    }
+
+    #button-mobile .navbar-toggler-icon {
+        width: 30px;
+    }
+
+    #logo-mobile {
+        display: block;
+        text-align: center;
+        padding: 0;
+    }
+
+    #logo-mobile img {
+        width: 125px;
+        border-radius: 6px;
+    }
+
+    #login-mobile {
+        display: block;
+        text-align: right;
+        margin-top: 3px;
+    }
+
+    #search-mobile {
+        display: block;
+    }
+
+}
+
+/* ************************************************** */
+/* ********************* MAIN *********************** */
+/* ************************************************** */
+
+main {
+    margin-top: 2.5rem;
+    padding: 0% 3%;
+}
+
+main #path {
+    border-radius: 5px;
+    padding: 0.2rem 2%;
+    background-color: rgba(236, 238, 237, 1);
+}
+
+#path p {
+    position: relative;
+    top: 0.5rem;
+    font-size: smaller;
+}
+
+main #body {
+    margin: 2rem 6rem 0;
+    padding: 1rem 2rem;
+    border: solid 1px rgba(236, 238, 237, 1);
+    border-radius: 7px;
+}
+
+main #body #cart-title {
+    height: 3rem;
+}
+
+#cart-title h5,
+#cart-title p {
+    display: inline;
+    width: fit-content;
+}
+
+main #body #cart {
+    border: solid 0.5px rgba(236, 238, 237, 0.914);
+    border-radius: 4px;
+    padding: 0;
+    margin-right: 1.5rem;
+}
+
+.cart-item {
+    padding: 1%;
+}
+
+.cart-item-img img {
+    margin-right: 1rem;
+    width: 12%;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+}
+
+.cart-item-img div {
+    display: inline-block;
+    width: 320px;
+    height: 20px;
+    overflow: hidden;
+}
+
+.cart-item-amount-number,
+.cart-item-amount-button {
+    display: inline;
+    width: fit-content;
+}
+
+.cart-item span {
+    margin-right: 3rem;
+}
+
+
+main #body #total {
+    padding: 0rem 2rem 0 3rem;
+}
+
+#body #total button {
+    color: white;
+    font-size: larger;
+    background-color: rgba(49, 92, 76, 0.86);
+}

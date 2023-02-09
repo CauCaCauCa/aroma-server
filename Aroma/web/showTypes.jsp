@@ -19,7 +19,7 @@
         integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 
     <!-- css customize -->
-    <link rel="stylesheet" href="./css/showTypes.css">
+    <link rel="stylesheet" href="./resrc/css/showTypes.css">
 
 
 </head>

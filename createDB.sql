@@ -54,10 +54,20 @@ GO
 
 CREATE TABLE AccountCustomer
 ( 
-	phone VARCHAR(13) NOT NULL,
+	phone VARCHAR(11) NOT NULL,
 	name VARCHAR(25) NOT NULL,
 	password VARCHAR(25) NOT NULL,
+	sessionKey BIGINT NOT NULL,
 	PRIMARY KEY (phone)
+);
+go
+
+CREATE TABLE Cart
+( 
+	phone VARCHAR(11) NOT NULL,
+	data VARCHAR(200),
+	PRIMARY KEY (phone),
+	FOREIGN KEY (phone) REFERENCES AccountCustomer(phone)
 );
 go
 
@@ -98,17 +108,21 @@ go
 
 CREATE TABLE Invoice
 ( 
-	phone VARCHAR(13) NOT NULL,
+	phone VARCHAR(11) NOT NULL,
 	proID VARCHAR(5) NOT NULL,
 	quantity int NOT NULL,
-	time_order datetime,
+	time_order datetime NOT NULL,
+	address VARCHAR(300) NOT NULL,
 	isInvoice bit, --boolean
 	PRIMARY KEY (phone, proID, time_order),
 	FOREIGN KEY (phone) REFERENCES AccountCustomer(phone),
 	FOREIGN KEY (proID) REFERENCES Products(proID),
 );
-go	
+go		
 
+insert AccountCustomer(phone, name, password, sessionKey) values (N'0356415082', N'tiennt', N'123', 1)
+insert AccountCustomer(phone, name, password, sessionKey) values (N'0942250655', N'dotien', N'123', 1)
+go
 
 INSERT [dbo].[Brand] ([brandID], [name]) VAlUES (1, N'Armaf')
 INSERT [dbo].[Brand] ([brandID], [name]) VAlUES  (2, N'Christian Dior')

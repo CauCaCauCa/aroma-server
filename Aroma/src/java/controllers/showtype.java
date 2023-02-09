@@ -1,6 +1,6 @@
 package controllers;
 
-import database.SQLserver;
+import data.SQLserver;
 import java.io.IOException;
 import java.util.LinkedList;
 import javax.servlet.ServletException;
@@ -20,19 +20,19 @@ public class showtype extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
-        SQLserver sql = new SQLserver();
-        String type = req.getParameter("type");
-        if (type.matches("men")) {
-            LinkedList<Product> listMen = sql.getPerfumeList(1);
-            req.setAttribute("list-men", listMen);
-        } else if (type.matches("women")) {
-            LinkedList<Product> listWomen = sql.getPerfumeList(2);
-            req.setAttribute("list-women", listWomen);
-        } else {
-            LinkedList<Product> listUnisex = sql.getPerfumeList(3);
-            req.setAttribute("list-unisex", listUnisex);
-        }
-        req.getRequestDispatcher("showTypes.jsp").forward(req, res);
+//        SQLserver sql = new SQLserver();
+//        String type = req.getParameter("type");
+//        if (type.matches("men")) {
+//            LinkedList<Product> listMen = sql.getPerfumeList(1);
+//            req.setAttribute("list-men", listMen);
+//        } else if (type.matches("women")) {
+//            LinkedList<Product> listWomen = sql.getPerfumeList(2);
+//            req.setAttribute("list-women", listWomen);
+//        } else {
+//            LinkedList<Product> listUnisex = sql.getPerfumeList(3);
+//            req.setAttribute("list-unisex", listUnisex);
+//        }
+//        req.getRequestDispatcher("showTypes.jsp").forward(req, res);
     }
 
 }

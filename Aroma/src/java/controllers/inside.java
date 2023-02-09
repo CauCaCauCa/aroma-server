@@ -1,6 +1,14 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package controllers;
 
+import data.CookieMng;
+import data.SQLserver;
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,23 +19,27 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author dotie
  */
-@WebServlet(name = "MainController", urlPatterns = {"/MainController"})
-public class MainController extends HttpServlet {
+
+/*
+    test 
+*/
+@WebServlet(name = "inside", urlPatterns = {"/inside"})
+public class inside extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String action = request.getParameter("action");
-        if (!(action == null)) {
-            switch (action) {
-                case "men": // men's perfume page
-                    break;
-                case "women": // women's perfume page
-                    break;
-                case "unisex": // unisex's perfume page
-                    break;
+        response.setContentType("text/html;charset=UTF-8");
+        String key = CookieMng.find("user", request.getCookies());
+        if (!key.matches("")) {
+            String arr[] = key.split(":");
+            SQLserver db = new SQLserver();
+            if (db.CheckKey(arr[0], arr[1])) {
+                response.sendRedirect("MainController");
+            } else {
+                request.getRequestDispatcher("login/login.jsp").forward(request, response);
             }
         } else {
-            response.sendRedirect("./");
+            request.getRequestDispatcher("login/login.jsp").forward(request, response);
         }
     }
 

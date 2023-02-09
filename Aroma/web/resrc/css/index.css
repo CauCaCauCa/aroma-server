@@ -143,14 +143,19 @@ main {
     box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 1px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
 }
 
-#product #men,#women,#unisex {
+#product #men,
+#women,
+#unisex {
     border-radius: 6px;
     background-color: rgb(217, 217, 217);
     box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
-#women, #unisex{
+
+#women,
+#unisex {
     margin-top: 3rem;
 }
+
 #product #title {
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
@@ -159,8 +164,8 @@ main {
     padding: 1% 3%;
 }
 
-#product #detail {
-    padding: 0% 2% 2% 11.5%;
+#product .detail {
+    padding: 0% 2% 4% 11.5%;
 }
 
 .card {
@@ -176,10 +181,12 @@ main {
 .card-title:hover {
     color: blue;
 }
-#card1{
+
+#card1 {
     height: 120px;
     overflow: hidden;
 }
+
 a {
     text-decoration: none;
 }
@@ -215,7 +222,7 @@ a {
         padding: 0% 2%;
     }
 
-    #product #detail {
+    #product .detail {
         padding: 0% 2% 2% 8%;
     }
 
@@ -228,7 +235,7 @@ a {
         display: none;
     }
 
-    #card1{
+    #card1 {
         height: 110px;
     }
 

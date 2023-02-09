@@ -3,9 +3,7 @@
     Created on : Feb 1, 2023, 3:40:17 PM
     Author     : dotie
 --%>
-
-<%@page import="modules.Product"%>
-<%@page import="java.util.LinkedList"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="en">
@@ -21,8 +19,8 @@
               integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 
         <!-- css customize -->
-        <link rel="stylesheet" href="./css/index.css">
-
+        <link rel="stylesheet" href="./resrc/css/index.css">
+        <jsp:useBean id="a" class="data.ProMng" scope="request"/>
     </head>
 
     <body>
@@ -33,7 +31,7 @@
 
                     <div class="col-lg-2" id="search">
 
-                        <form action="/index.html" method="get" class="input-group">
+                        <form action="/index.jsp" method="get" class="input-group">
                             <input type="text" class="form-control radius-10" placeholder="search" aria-label="search"
                                    name="search" aria-describedby="basic-addon2">
 
@@ -58,7 +56,7 @@
 
                     <div class="col-lg-2 " id="login">
 
-                        <a href="#" class="text-white">
+                        <a href="LoginController" class="text-white">
                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
                                  class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
                             <path fill-rule="evenodd"
@@ -71,7 +69,7 @@
 
                         <span>&nbsp;|&nbsp;</span>
 
-                        <a href="#" class="text-white">
+                        <a href="cart.jsp" class="text-white">
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                                  class="bi bi-cart-plus" viewBox="0 0 16 16">
                             <path
@@ -119,7 +117,7 @@
 
                                 <div class="col-lg-2" id="search-mobile">
                                     <br>
-                                    <form action="/index.html" method="get" class="input-group">
+                                    <form action="/index.jsp" method="get" class="input-group">
                                         <input type="text" class="form-control radius-10" placeholder="search"
                                                aria-label="search" name="search" aria-describedby="basic-addon2">
 
@@ -199,29 +197,23 @@
                     <a href="showtype?type=men">
                         <h3 id="title">Men's perfume - Nước Hoa Nam</h3>
                     </a>
-                    <div id="detail">
+                    <div class="detail">
 
                         <div class="row">
-
-                            <%
-                                LinkedList<Product> list = (LinkedList<Product>) request.getAttribute("list-men");
-                                for (int i = 0; i < 5; i++) {
-                            %>
-                            <div class="card">
-                                <img src="<%=list.get(i).getImg_path1()%>" class="card-img-top" alt="...">
-                                <div class="card-body" id="card1">
-                                    <a href="#">
-                                        <h6 class="card-title"><%=list.get(i).getName()%></h6>
-                                    </a>
-                                    <p class="card-text"><%=list.get(i).getPrice()%>đ</p>
+                            <c:forEach items="${a.takePerfumeList(1,5)}" var="e">
+                                <div class="card">
+                                    <img src="${e.img_path1}" class="card-img-top" alt="...">
+                                    <div class="card-body" id="card1">
+                                        <a href="#">
+                                            <h6 class="card-title">${e.name}</h6>
+                                        </a>
+                                        <p class="card-text">${e.priceS}đ</p>
+                                    </div>
+                                    <form action="CartController" method="post" class="card-body">
+                                        <button type="submit" name="action" value="add-${e.proID}"class="btn">Add to cart</button>
+                                    </form>
                                 </div>
-                                <div class="card-body">
-                                    <a href="#" class="btn">Add to cart</a>
-                                </div>
-                            </div>
-                            <%
-                                }
-                            %>
+                            </c:forEach>
 
 
                             <div class="card rounded-circle" id="more">
@@ -238,71 +230,25 @@
                         </div>
 
                     </div>
+                    
                 </div>
-                <!--            <div id="women">
-                                <h3 id="title">Women's perfume - Nước Hoa Nữ</h3>
-                                <div id="detail">
-                
-                                    <div class="row">
-                                        <div class="card">
-                                            <img src="./resrc/img1.png" class="card-img-top" alt="...">
-                                            <div class="card-body">
-                                                <a href="#">
-                                                    <h5 class="card-title">Card title</h5>
-                                                </a>
-                                                <p class="card-text">Price: 1,180,000đ</p>
-                                                <a href="#" class="btn">Add to cart</a>
-                                            </div>
-                                        </div>
-                
-                
-                                        <div class="card rounded-circle" id="more">
-                                            <a href="#">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"
-                                                    class="bi bi-arrow-right-circle" viewBox="0 0 16 16" style="margin: 0.4rem;">
-                                                    <path fill-rule="evenodd"
-                                                        d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z" />
-                                                </svg>
-                                            </a>
-                                        </div>
-                
-                
-                                    </div>
-                
-                                </div>
-                            </div>
-                            <div id="unisex">
-                                <h3 id="title">UNISEX</h3>
-                                <div id="detail">
-                
-                                    <div class="row">
-                                        <div class="card">
-                                            <img src="./resrc/img1.png" class="card-img-top" alt="...">
-                                            <div class="card-body">
-                                                <a href="#">
-                                                    <h5 class="card-title">Card title</h5>
-                                                </a>
-                                                <p class="card-text">Price: 1,180,000đ</p>
-                                                <a href="#" class="btn">Add to cart</a>
-                                            </div>
-                                        </div>
-                
-                
-                                        <div class="card rounded-circle" id="more">
-                                            <a href="#">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"
-                                                    class="bi bi-arrow-right-circle" viewBox="0 0 16 16" style="margin: 0.4rem;">
-                                                    <path fill-rule="evenodd"
-                                                        d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z" />
-                                                </svg>
-                                            </a>
-                                        </div>
-                
-                
-                                    </div>
-                
-                                </div>
-                            </div>-->
+
+
+                <div id="women">
+                    <a href="showtype?type=women">
+                        <h3 id="title">Women's perfume - Nước Hoa Nữ</h3>
+                    </a>
+                    <div class="detail"> </div>
+
+                </div>
+                <div id="unisex">
+                    <a href="showtype?type=unisex">
+                        <h3 id="title">Unisex's perfume</h3>
+                    </a>
+                    <div class="detail"> </div>
+
+                </div>
+
             </div>
 
 
