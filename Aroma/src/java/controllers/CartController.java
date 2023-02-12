@@ -50,7 +50,7 @@ public class CartController extends HttpServlet {
             c.setPath("/");
             response.addCookie(c);
             response.sendRedirect("cart.jsp");
-        } else if (arr[0].matches("add")) {
+        } else if (request.getParameter("quantity") == null) {
             String cart = Cart.addToCart(arr[1], cookie);
             Cookie c = new Cookie("cart", cart);
             c.setMaxAge(60 * 60);
@@ -58,12 +58,15 @@ public class CartController extends HttpServlet {
             response.addCookie(c);
 //            request.setAttribute("notify", "block");
             response.sendRedirect("cart.jsp");
-        } else if (request.getParameter("quantity") != null) {
+        } else {
             String cart = Cart.addToCart(arr[1], cookie);
             int quantity = Integer.parseInt(request.getParameter("quantity"));
+            System.out.println(quantity);
             for (int i = 0; i < quantity-1; i++) {
                 cart = Cart.addToCart(arr[1], cart);
+                System.out.println(i);
             }
+            
             Cookie c = new Cookie("cart", cart);
             c.setMaxAge(60 * 60);
             c.setPath("/");

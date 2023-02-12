@@ -7,3 +7,14 @@ INSERT Invoice(phone, detail, time_order, address, isInvoice) VAlUES (N'03564150
 
 
 SELECT * FROM Invoice
+
+
+select count(b.name) as amount from Brand b
+
+UPDATE Products SET name = 'trong tien' where proID = 'P021'
+
+DELETE FROM Products where proID='P021';  
+
+
+select * from Products
+order by price desc

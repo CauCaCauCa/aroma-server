@@ -36,7 +36,6 @@ public class Cart {
     }
 
     public static String setData(String action, String proId, String data) {
-        System.out.println("");
         if (!data.matches("")) {
             data = replaceAmount(data, proId, action);
         } else {
@@ -71,7 +70,6 @@ public class Cart {
         String arr[] = data.split(":");
         for (int i = 0; i < arr.length; i += 2) {
             if (arr[i].matches(proId)) {
-                System.out.println("ok");
                 data = setData("plus", proId, data); // have function update db inside
                 return data;
             }

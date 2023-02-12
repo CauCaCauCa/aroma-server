@@ -3,6 +3,7 @@
     Created on : Feb 9, 2023, 10:21:36 PM
     Author     : dotie
 --%>
+<%@page import="data.CookieMng"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
@@ -19,14 +20,14 @@
     </head>
 
     <body>
-        <header>
-            <!-- Add header content here, such as a logo and navigation -->
-        </header>
         <main>
             <h1>Aroma Shop Admin Page</h1>
             <section>
                 <button onclick="changeDisplay('form1')">
                     <h2>Add a New Perfume</h2>
+                </button>
+                <button onclick="changeDisplay('form1')">
+                    <h2>Manager Invoices</h2>
                 </button>
                 <br><br>
                 <form action="admin/admin.jsp" id="form1" style="display: none;">
@@ -71,15 +72,16 @@
                         <!-- Use JavaScript to dynamically populate the table with existing perfumes -->
                         <c:forEach items="${a.takePerfumeList(query)}" var="e">
                             <tr>
-                            <td>${e.name}</td>
-                            <td>${e.typeID}</td>
-                            <td>${e.price}</td>
-                            <td>${e.quantity}</td>
-                            <td>
-                                <button onclick="window.location = 'admin/modifier.jsp?id=${e.proID}'">Open</button>
-                            </td>
-                        </tr>
-                    </c:forEach>
+                                <td>${e.name}</td>
+                                <td>${e.typeID}</td>
+                                <td>${e.price}</td>
+                                <td>${e.quantity}</td>
+                                <td>
+                                    <button onclick="window.location = 'admin/modifier.jsp?id=${e.proID}'">Open</button>
+                                    <button onclick="window.location = 'AdminController?id=${e.proID}'">Remove</button>
+                                </td>
+                            </tr>
+                        </c:forEach>
                     </tbody>
                 </table>
             </section>

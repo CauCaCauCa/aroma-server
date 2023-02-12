@@ -180,16 +180,27 @@
                             </form>
                         </div>
 
-                        <div id="result">
-                            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-                            <label for="vehicle1"> I have a bike</label><br>
-                            <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
-                            <label for="vehicle2"> I have a car</label><br>
-                            <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                            <label for="vehicle3"> I have a boat</label><br><br>
+                        <!--                        <div id="result">
+                                                    <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                                                    <label for="vehicle1"> I have a bike</label><br>
+                                                    <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+                                                    <label for="vehicle2"> I have a car</label><br>
+                                                    <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+                                                    <label for="vehicle3"> I have a boat</label><br><br>
+                                                </div>-->
+
+                        <br><br>
+                        <div style="margin-left: 1rem;">
+                            <label for="minPriceRange">Min Price:</label>
+                            <input type="range" id="minPriceRange" min="100000" max="9000000" value="100000" oninput="updateMinValue(this.value)">
+                            <span id="minPriceValue">100000</span>
+
+                            <br><br>
+
+                            <label for="maxPriceRange">Max Price:</label>
+                            <input type="range" id="maxPriceRange" min="100000" max="9000000" value="9000000" oninput="updateMaxValue(this.value)">
+                            <span id="maxPriceValue">900000</span>
                         </div>
-
-
 
                     </div>
                 </div>
@@ -199,7 +210,7 @@
                     <div id="sort">
                         <p>Xếp theo:</p>
                         <p>
-                            <select class="form-select" aria-label="Default select example"
+                            <select id="select-sort" class="form-select" aria-label="Default select example"
                                     style="width: 150px; height: 35px;">
                                 <option selected value="name">Theo tên</option>
                                 <option value="ascending">Giá tăng</option>
@@ -222,7 +233,7 @@
                                     <form action="CartController" method="post" class="card-body">
                                         <button type="submit" name="action" value="add-${e.proID}"class="btn">Add to cart</button>
                                     </form>
-                                    
+
                                 </div>
                             </c:forEach>
 
@@ -240,7 +251,7 @@
         </footer>
 
         <script>
-          function back() {
+            function back() {
                 var banner = document.getElementById('carouselExampleControls');
                 if (banner.style.zIndex == "-1") {
                     delay(300).then(() => banner.style.zIndex = "0");
@@ -250,6 +261,28 @@
             }
             function delay(time) {
                 return new Promise(resolve => setTimeout(resolve, time));
+            }
+            document.getElementById("select-sort").onchange = function () {
+                window.location.assign("admin");
+            };
+            function updateMinValue(val) {
+                document.getElementById("minPriceValue").innerHTML = val;
+
+                let maxPriceRange = document.getElementById("maxPriceRange");
+                if (val >= maxPriceRange.value) {
+                    maxPriceRange.value = val;
+                    updateMaxValue(val);
+                }
+            }
+
+            function updateMaxValue(val) {
+                document.getElementById("maxPriceValue").innerHTML = val;
+
+                let minPriceRange = document.getElementById("minPriceRange");
+                if (val <= minPriceRange.value) {
+                    minPriceRange.value = val;
+                    updateMinValue(val);
+                }
             }
         </script>
 

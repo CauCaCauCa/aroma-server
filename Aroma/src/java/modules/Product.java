@@ -6,17 +6,17 @@ package modules;
  */
 public class Product {
 
-    private final String proID;
-    private final String name;
-    private final String brandID;
-    private final double price;
-    private final int quantity;
-    private final String intro;
-    private final String origin;
-    private final String typeID;
-    private final String img_path1;
-    private final String img_path2;
-    private final String img_path3;
+    private String proID;
+    private String name;
+    private String brandID;
+    private double price;
+    private int quantity;
+    private String intro;
+    private String origin;
+    private String typeID;
+    private String img_path1;
+    private String img_path2;
+    private String img_path3;
 
     // only for cart
     public int amount = 0;
@@ -106,6 +106,56 @@ public class Product {
     public int getAmount() {
         return amount;
     }
+
+    public void setProID(String proID) {
+        this.proID = proID;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setBrandID(String brandID) {
+        this.brandID = brandID;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public void setIntro(String intro) {
+        this.intro = intro;
+    }
+
+    public void setOrigin(String origin) {
+        this.origin = origin;
+    }
+
+    public void setTypeID(String typeID) {
+        this.typeID = typeID;
+    }
+
+    public void setImg_path1(String img_path1) {
+        this.img_path1 = img_path1;
+    }
+
+    public void setImg_path2(String img_path2) {
+        this.img_path2 = img_path2;
+    }
+
+    public void setImg_path3(String img_path3) {
+        this.img_path3 = img_path3;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+    
+    
 
     @Override
     public String toString() {

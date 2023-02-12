@@ -38,6 +38,10 @@ public class LoginController extends HttpServlet {
         if (request.getParameter("user") != null) {
             if (db.AdminLogin(request.getParameter("user"), request.getParameter("password"))) {
                 request.setAttribute("query", "");
+                Cookie c = new Cookie("admin", "true");
+                c.setMaxAge(60*10);
+                c.setPath("/");
+                response.addCookie(c); 
                 request.getRequestDispatcher("admin/admin.jsp").forward(request, response);
             } else {
                 request.setAttribute("noice", "*wrong user or password");
