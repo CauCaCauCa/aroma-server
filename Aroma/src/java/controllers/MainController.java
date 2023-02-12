@@ -1,11 +1,14 @@
 package controllers;
 
+import data.ProMng;
 import java.io.IOException;
+import java.util.LinkedList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modules.Product;
 
 /**
  *
@@ -16,19 +19,16 @@ public class MainController extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String action = request.getParameter("action");
-        if (!(action == null)) {
-            switch (action) {
-                case "men": // men's perfume page
-                    break;
-                case "women": // women's perfume page
-                    break;
-                case "unisex": // unisex's perfume page
-                    break;
+        String id = request.getParameter("open-product");
+        ProMng mng = new ProMng();
+        LinkedList<Product> list = mng.takePerfumeList(0);
+        for (Product p : list) {
+            if (p.getProID().matches(id)) {
+                request.setAttribute("product", p);
+                break;
             }
-        } else {
-            response.sendRedirect("./");
         }
+        request.getRequestDispatcher("showProduct.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

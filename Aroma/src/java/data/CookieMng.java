@@ -1,6 +1,9 @@
 package data;
 
+import java.io.IOException;
+import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  *
@@ -10,12 +13,15 @@ public class CookieMng {
 
     public static String find(String name, Cookie cookies[]) {
         String cookie = "";
-        for (Cookie c : cookies) {
-            if (name.matches(c.getName())) {
+        if (cookies != null) {
+            for (Cookie c : cookies) {
+            if (c.getName().matches(name)) {
                 cookie += c.getValue();
                 break;
             }
         }
+        }
         return cookie;
     }
+
 }

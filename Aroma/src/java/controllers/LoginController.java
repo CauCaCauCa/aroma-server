@@ -19,6 +19,14 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        if (request.getParameter("logout") != null) { // clear cookie user login
+            Cookie c = new Cookie("user", "");
+            c.setMaxAge(0);
+            c.setPath("/");
+            response.addCookie(c);
+            response.sendRedirect("./");
+            return;
+        }
         request.getRequestDispatcher("login/login.jsp").forward(request, response);
     }
 
@@ -27,12 +35,22 @@ public class LoginController extends HttpServlet {
             throws ServletException, IOException {
         // Check account first
         SQLserver db = new SQLserver();
+        if (request.getParameter("user") != null) {
+            if (db.AdminLogin(request.getParameter("user"), request.getParameter("password"))) {
+                request.setAttribute("query", "");
+                request.getRequestDispatcher("admin/admin.jsp").forward(request, response);
+            } else {
+                request.setAttribute("noice", "*wrong user or password");
+                response.sendRedirect("admin");
+            }
+            return;
+        }
         if (db.checkAcc(request.getParameter("phone"), request.getParameter("password"))) {
             long time = System.currentTimeMillis();
             String key = request.getParameter("phone") + ":" + time;
-            db.SetKey(request.getParameter("phone"), time+"");
+            db.SetKey(request.getParameter("phone"), time + "");
             Cookie c = new Cookie("user", key);
-            c.setMaxAge(180);
+            c.setMaxAge(300);
             c.setPath("/");
             response.addCookie(c);
             response.sendRedirect("./");

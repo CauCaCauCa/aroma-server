@@ -185,6 +185,7 @@ main {
 #card1 {
     height: 120px;
     overflow: hidden;
+    font-size: small;
 }
 
 a {

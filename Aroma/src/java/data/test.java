@@ -5,6 +5,8 @@
  */
 package data;
 
+import java.nio.charset.StandardCharsets;
+
 /**
  *
  * @author dotie
@@ -12,16 +14,18 @@ package data;
 public class test {
 
     public static void main(String[] args) {
+//        Order.recordOrder("0356415082", "cart", System.currentTimeMillis(),
+//                "thủ đức",
+//                "payment", "0");
+//        System.out.println(Order.getOrder().getLast());
 //        SQLserver db = new SQLserver();
-//        if (db.CheckKey("0356415082", "1675900502363")) {
-//            System.out.println(db.getCart("0356415082"));
-//        }
-//        System.out.println(db.getCart("0356415082"));
+//        System.out.println(db.checkUser("0356415082"));
 
-        Cart cart = new Cart();
-        cart.setData("plus", "P001", "0356415082");
+        String item = "thá»§ Äá»©c";
+
+        byte[] bytes = item.getBytes(StandardCharsets.ISO_8859_1);
+        item = new String(bytes, StandardCharsets.UTF_8);
         
-        
-//        System.out.println(cart.getData("P001:2:P003:1").size());
+        System.out.println(item);
     }
 }

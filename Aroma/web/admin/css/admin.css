@@ -1,0 +1,65 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+header a {
+    color: #fff;
+    text-decoration: none;
+}
+
+main {
+    padding: 1rem;
+}
+
+section {
+    margin-bottom: 2rem;
+}
+
+form input,
+form textarea {
+    display: block;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    width: 99%;
+}
+
+form button[type="submit"] {
+    background-color: #333;
+    color: #fff;
+    padding: 0.5rem 1rem;
+}
+
+table {
+    border-collapse: collapse;
+    width: 99%;
+}
+
+table thead th,
+table tbody td {
+    border: 1px solid #333;
+    padding: 0.5rem;
+    text-align: left;
+}
+
+table thead th {
+    background-color: #333;
+    color: #fff;
+}
+
+table tbody td button {
+    background-color: transparent;
+    border: 1px solid #333;
+    color: #333;
+    margin-right: 0.5rem;
+    padding: 0.25rem 0.5rem;
+}

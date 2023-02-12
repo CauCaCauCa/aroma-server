@@ -1,12 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controllers;
 
-import data.CookieMng;
-import data.SQLserver;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -19,28 +12,14 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author dotie
  */
-
-/*
-    test 
-*/
-@WebServlet(name = "inside", urlPatterns = {"/inside"})
-public class inside extends HttpServlet {
+@WebServlet(name = "SearchController", urlPatterns = {"/SearchController"})
+public class SearchController extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        String key = CookieMng.find("user", request.getCookies());
-        if (!key.matches("")) {
-            String arr[] = key.split(":");
-            SQLserver db = new SQLserver();
-            if (db.CheckKey(arr[0], arr[1])) {
-                response.sendRedirect("MainController");
-            } else {
-                request.getRequestDispatcher("login/login.jsp").forward(request, response);
-            }
-        } else {
-            request.getRequestDispatcher("login/login.jsp").forward(request, response);
-        }
+        String query = request.getParameter("query");
+        request.setAttribute("query", query);
+        request.getRequestDispatcher("admin/admin.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

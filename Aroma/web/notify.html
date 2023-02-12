@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
+    }
+
+    #addPromt {
+      position: absolute;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(189, 206, 219, 0.611);
+    }
+
+    #addPromt-box {
+      position: relative;
+      top: 11rem;
+      left: 40%;
+      text-align: center;
+      background-color: rgb(177, 184, 195);
+      border-radius: 6px;
+      width: 20%;
+      height: 350px;
+      animation-name: move_right;
+      animation-duration: 2s;
+    }
+
+    #addPromt-box img {
+      width: 70%;
+      height: auto;
+    }
+
+    #addPromt-box p {
+      font-weight: bold;
+      position: relative;
+      top: -1rem;
+    }
+
+    #addPromt-box button {
+      width: 80%;
+      height: 3rem;
+      border-radius: 5px;
+      font-weight: bold;
+      font-size: larger;
+    }
+
+    /* animation */
+    @keyframes move_right {
+      0% {
+        top: 0px;
+      }
+
+      100% {
+        top: 11rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="addPromt">
+    <div id="addPromt-box">
+      <img src="resrc/picAddToCart.png" alt="">
+      <p>Đã thêm vào giỏ hàng ♥️</p>
+      <button onclick="TurnOff()">OK</button>
+    </div>
+  </div>
+
+  <script>
+    function TurnOff(){
+      var notify = document.getElementById('addPromt');
+      notify.style.display = 'none';
+    }
+  </script>
+</body>
+
+</html>

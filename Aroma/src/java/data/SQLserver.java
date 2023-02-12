@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
-
 /**
  *
  * @author dotie
@@ -108,31 +107,22 @@ public class SQLserver {
         return false;
     }
 
-    public String getCart(String user) {
-        System.out.println("get cart");
-        try {
-            Statement Statement = connection.createStatement();
-            String query = "SELECT data FROM Cart WHERE phone='" + user + "'";
-            ResultSet ResultSet = Statement.executeQuery(query);
-            while (ResultSet.next()) {
-                return ResultSet.getString("data").trim();
-            }
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        return "";
-    }
-
-    public void setCart(String user, String data) {
-        System.out.println("set cart");
+    public String getUserName(String user) {
         if (checkUser(user)) {
             try {
                 Statement Statement = connection.createStatement();
-                String sql = "UPDATE Cart SET data = '"+ data + "' WHERE phone = " + user;
-                Statement.executeUpdate(sql);
+                String query = "SELECT name FROM AccountCustomer WHERE phone=" + user;
+
+                ResultSet rs = Statement.executeQuery(query);
+
+                while (rs.next()) {
+                   return rs.getString("name");
+                }
             } catch (Exception e) {
                 System.out.println(e);
             }
         }
+        return null;
     }
+
 }

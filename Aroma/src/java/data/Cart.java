@@ -1,6 +1,9 @@
 package data;
 
+import java.io.IOException;
 import java.util.LinkedList;
+import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modules.Product;
@@ -12,25 +15,7 @@ import modules.Product;
 // auto check db and cookie browser to export cart
 public class Cart {
 
-    private static String data;
-
-    public static void loadCart(HttpServletRequest req, HttpServletResponse res) throws Exception {
-
-        String key = CookieMng.find("user", req.getCookies());
-        String arr[] = key.split(":");
-        SQLserver db = new SQLserver();
-        if (!key.matches("")) {
-            if (db.CheckKey(arr[0], arr[1])) {
-                data = db.getCart(arr[0]);
-            }
-        } else {
-            req.getRequestDispatcher("login/login.jsp").forward(req, res);
-        }
-
-    }
-
-    public static LinkedList<Product> getData(HttpServletRequest req, HttpServletResponse res) throws Exception {
-        loadCart(req, res);
+    public static LinkedList<Product> getData(String data) {
 
         LinkedList<Product> list = new LinkedList<>();
         if (!data.matches("")) {
@@ -50,19 +35,14 @@ public class Cart {
         return list;
     }
 
-    public static void setData(String action, String proId, String user) {
-//        String data = "P001:1";
+    public static String setData(String action, String proId, String data) {
         System.out.println("");
         if (!data.matches("")) {
             data = replaceAmount(data, proId, action);
         } else {
             data = proId + ":" + 1;
         }
-        // record to db
-        SQLserver db = new SQLserver();
-        db.setCart(user, data);
-        System.out.println(data);
-
+        return data;
     }
 
     public static String replaceAmount(String origin, String sample, String action) {
@@ -86,9 +66,18 @@ public class Cart {
         }
         return str;
     }
-    
-    public static void addToCart(String user, String proid){
-        
+
+    public static String addToCart(String proId, String data) {
+        String arr[] = data.split(":");
+        for (int i = 0; i < arr.length; i += 2) {
+            if (arr[i].matches(proId)) {
+                System.out.println("ok");
+                data = setData("plus", proId, data); // have function update db inside
+                return data;
+            }
+        }
+        data += proId + ":1:";
+        return data;
     }
 
 }

@@ -3,6 +3,7 @@
     Created on : Feb 8, 2023, 7:53:50 PM
     Author     : dotie
 --%>
+<%@page import="data.CookieMng"%>
 <%@page import="modules.Product"%>
 <%@page import="java.util.LinkedList"%>
 <%@page import="data.Cart"%>
@@ -162,9 +163,11 @@
             <div id="path">
                 <p id="path1">Home > Cart</p>
             </div>
-            <%
+            <%                
                 long total = 0;
-                LinkedList<Product> list = Cart.getData(request, response);
+                Cookie cookie[] = request.getCookies();
+                String data = CookieMng.find("cart", cookie);
+                LinkedList<Product> list = Cart.getData(data);
             %>
             <form action="CartController" method="post" id="body" class="row">
                 <div id="cart-title">
@@ -209,7 +212,7 @@
                         <p class=" col fw-bold text-start">Thành tiền:</p>
                         <p id="total" class="col text-end"><%=s%>đ</p>
                     </div>
-                    <button class="btn" type="submit" style="width: 100%;">Đặt Ngay</button>
+                    <button class="btn" style="width: 100%; padding: 0;"><a class="btn" href="order.jsp" style="width:100%; color:white">Đặt Ngay</a></button>
                 </div>
             </form>
 

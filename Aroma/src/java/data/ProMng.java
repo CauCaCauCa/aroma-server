@@ -78,4 +78,19 @@ public class ProMng {
         return list;
     }
 
+    public LinkedList<Product> takePerfumeList(String query) {
+        LinkedList<Product> list = takePerfumeList(0);
+        if (!query.matches("")) {
+            LinkedList<Product> result = new LinkedList<>();
+            
+            for (Product p : list) {
+                if (p.getName().toUpperCase().contains(query.toUpperCase())) {
+                    result.add(p);
+                }
+            }
+            return result;
+        }
+        return list;
+    }
+
 }

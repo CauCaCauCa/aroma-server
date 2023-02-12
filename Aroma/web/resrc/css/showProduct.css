@@ -1,6 +1,6 @@
 #head {
     width: 100%;
-    height: 107.69px;
+    height: 87.69px;
     background-color: rgb(49, 92, 76);
 }
 
@@ -13,7 +13,7 @@
 }
 
 #search {
-    margin-top: 40px;
+    margin-top: 30px;
 }
 
 #logo {
@@ -21,7 +21,7 @@
 }
 
 #login {
-    margin-top: 45px;
+    margin-top: 35px;
 }
 
 #login a {
@@ -36,8 +36,6 @@
 
 #options {
     width: 100%;
-    height: 44.31px;
-    background-color: rgb(217, 217, 217);
 }
 
 nav {
@@ -46,7 +44,8 @@ nav {
 
 
 #options .row {
-    margin-top: 10px;
+    margin-top: 1px;
+    margin-bottom: -10px;
 }
 
 #options .row p:hover {
@@ -64,7 +63,7 @@ footer {
     width: 100%;
     height: 248px;
     background-color: rgb(49, 92, 76);
-    margin-top: 8rem;
+    margin-top: 4rem;
 }
 
 /* *config for mobile* */
@@ -119,88 +118,76 @@ footer {
 
 }
 
+
 /* ************************************************** */
 /* ********************* MAIN *********************** */
 /* ************************************************** */
-
 main {
-    margin-top: 2.5rem;
+    margin-top: 1rem;
     padding: 0% 3%;
 }
-
 main #path {
     border-radius: 5px;
     padding: 0.2rem 2%;
     background-color: rgba(236, 238, 237, 1);
 }
-
 #path p {
     position: relative;
     top: 0.5rem;
     font-size: smaller;
 }
 
+main #body{
+    margin: 1rem 8rem 6rem 8rem;
+    height: 500px;
+    padding: 1rem;
+}
 
-main #body {
-    margin: 2rem 6rem 0;
-    padding: 1rem 2rem;
-    border: solid 1px rgba(236, 238, 237, 1);
+#body #left img{
+    margin-top: 0.7rem;
+    border-radius: 10px;
+    width: 100%;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+#body #left #box-list{
+    width: 100%;
+    background-color: rgba(217, 217, 217, 0.4);
+    margin: 0.5rem 0 0 0;
+    padding-left: 0.65rem;
+    border-radius: 10px;
+}
+
+#body #left #box-list img{
+    width: 15%;
     border-radius: 7px;
+    margin: 0.5rem 0.25rem;
 }
 
-main #body #cart-title {
-    height: 3rem;
+#body #right{
+    padding: 0.7rem 1rem 0 2rem;
+    /* font-size: medium; */
 }
 
-#cart-title h5,
-#cart-title p {
-    display: inline;
-    width: fit-content;
+#body #right #paragraph{
+    margin-top: 1rem;
+    height: 6.5rem;
+    overflow: scroll;
+    overflow-x: hidden;
 }
-
-main #body #cart {
-    border: solid 0.5px rgba(236, 238, 237, 0.914);
+#body #right form{
+    margin-top: 2rem;
+}
+#body #right button{
+    background-color: rgba(49, 92, 76, 0.893);
+    border: none;
     border-radius: 4px;
-    padding: 0;
-    margin-right: 1.5rem;
-}
-
-.cart-item {
-    padding: 1%;
-}
-
-.cart-item-img img {
-    margin-right: 1rem;
-    width: 12%;
-    height: auto;
-    border-radius: 4px;
-    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
-}
-
-.cart-item-img div {
-    display: inline-block;
-    width: 320px;
-    height: 20px;
-    overflow: hidden;
-}
-
-.cart-item-amount-number,
-.cart-item-amount-button {
-    display: inline;
-    width: fit-content;
-}
-
-.cart-item span {
-    margin-right: 3rem;
-}
-
-
-main #body #total {
-    padding: 0rem 2rem 0 3rem;
-}
-
-#body #total button {
+    margin-top: 1rem;
     color: white;
-    font-size: larger;
-    background-color: rgba(49, 92, 76, 0.86);
+    font-weight: bold;
+    padding: 1rem 2rem;
 }
+
+
+/* ************************************************** */
+/* ***************** MAIN MOBILE ******************** */
+/* ************************************************** */

@@ -3,6 +3,7 @@
     Created on : Feb 1, 2023, 3:40:17 PM
     Author     : dotie
 --%>
+<%@page import="data.CookieMng"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!doctype html>
@@ -204,14 +205,15 @@
                                 <div class="card">
                                     <img src="${e.img_path1}" class="card-img-top" alt="...">
                                     <div class="card-body" id="card1">
-                                        <a href="#">
-                                            <h6 class="card-title">${e.name}</h6>
-                                        </a>
+                                        <form action="MainController" method="get">
+                                            <button type="sumbit" name="open-product" value="${e.proID}"><h6 class="card-title">${e.name}</h6></button>
+                                        </form>
                                         <p class="card-text">${e.priceS}đ</p>
                                     </div>
                                     <form action="CartController" method="post" class="card-body">
                                         <button type="submit" name="action" value="add-${e.proID}"class="btn">Add to cart</button>
                                     </form>
+                                    
                                 </div>
                             </c:forEach>
 
@@ -230,7 +232,7 @@
                         </div>
 
                     </div>
-                    
+
                 </div>
 
 
@@ -258,7 +260,6 @@
         <footer>
             <!-- place footer here -->
         </footer>
-
         <script>
             function back() {
                 var banner = document.getElementById('carouselExampleControls');

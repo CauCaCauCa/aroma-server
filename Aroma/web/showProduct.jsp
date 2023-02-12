@@ -1,9 +1,10 @@
 <%-- 
-    Document   : showTypes
-    Created on : Feb 3, 2023, 1:24:20 PM
+    Document   : showProduct
+    Created on : Feb 12, 2023, 11:32:03 AM
     Author     : dotie
 --%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
+
+<%@page import="modules.Product"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="en">
@@ -19,10 +20,7 @@
               integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 
         <!-- css customize -->
-        <link rel="stylesheet" href="./resrc/css/showTypes.css">
-
-        <jsp:useBean id="a" class="data.ProMng" scope="request"/>
-
+        <link rel="stylesheet" href="resrc/css/showProduct.css">
     </head>
 
     <body>
@@ -33,7 +31,7 @@
 
                     <div class="col-lg-2" id="search">
 
-                        <form action="/index.html" method="get" class="input-group">
+                        <form action="/index.jsp" method="get" class="input-group">
                             <input type="text" class="form-control radius-10" placeholder="search" aria-label="search"
                                    name="search" aria-describedby="basic-addon2">
 
@@ -51,7 +49,7 @@
                     <div class="col-lg-2"></div>
 
                     <div class="col-lg-2" id="logo">
-                        <a href="./"> <img src="./resrc/logo.png" alt="#" width="100%" height="auto"></a>
+                        <a href="./"> <img src="./resrc/logo.png" alt="#" width="75%" height="auto"></a>
                     </div>
 
                     <div class="col-lg-3"></div>
@@ -119,7 +117,7 @@
 
                                 <div class="col-lg-2" id="search-mobile">
                                     <br>
-                                    <form action="/index.html" method="get" class="input-group">
+                                    <form action="/index.jsp" method="get" class="input-group">
                                         <input type="text" class="form-control radius-10" placeholder="search"
                                                aria-label="search" name="search" aria-describedby="basic-addon2">
 
@@ -158,90 +156,62 @@
             </div>
         </header>
         <main>
+            <%
+                Product pro = (Product) request.getAttribute("product");
+                String status = "hết hàng";
+                if (pro.getQuantity() > 0) {
+                    status = "còn hàng";
+                }
+            %>
+            <div id="section">
+                <div id="path">
+                    <p id="path1">Home > Men’s perfume > <%=pro.getName()%></p>
+                </div>
 
-            <div id="path">
-                <p id="path1">Home > Men’s perfume</p>
-            </div>
-            <div class="row">
-                <div class="col col-lg-3" id="filter">
-                    <h5 class="text-center">BỘ LỌC</h5>
-                    <div class="detail">
-
-                        <div id="search-brand">
-                            <form class="d-flex" role="search">
-                                <input class="form-control me-2" type="search" placeholder="Tìm thương hiệu" aria-label="Search">
-                                <button type="submit" class="input-group-text radius-10" id="basic-addon2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                         class="bi bi-search" viewBox="0 0 16 16">
-                                    <path
-                                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                                    </svg>
-                                </button>
-                            </form>
+                <div id="body" class="row">
+                    <div id="left" class="col col-lg-4">
+                        <img src="<%=pro.getImg_path1()%>" alt="#" id="img-main">
+                        <div id="box-list">
+                            <img src="<%=pro.getImg_path1()%>" alt="#" id="img1"
+                                 onclick="setImageSource('img1')">
+                            <img src="<%=pro.getImg_path2()%>" alt="#" id="img2"
+                                 onclick="setImageSource('img2')">
+                            <img src="<%=pro.getImg_path3()%>" alt="#" id="img3"
+                                 onclick="setImageSource('img3')">
                         </div>
-
-                        <div id="result">
-                            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-                            <label for="vehicle1"> I have a bike</label><br>
-                            <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
-                            <label for="vehicle2"> I have a car</label><br>
-                            <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                            <label for="vehicle3"> I have a boat</label><br><br>
+                    </div>
+                    <div id="right" class="col col-lg-8">
+                        <h3 class="fw-bold"><%=pro.getName()%></h3>
+                        <p><span class="fw-bold">Trạng thái:</span>&nbsp;<%=status%></p>
+                        <p><span class="fw-bold">Giá:</span>&nbsp;<%=pro.getPrice()%></p>
+                        <div id="paragraph">
+                            <p><%=pro.getIntro()%></p>
                         </div>
-
-
+                        <p><span class="fw-bold">Xuất xứ:</span>&nbsp;<%=pro.getOrigin()%></p>
+                        <form action="CartController" method="post">
+                            <p class="fw-bold">Số lượng</p>
+                            <div>
+                                <input type="button" value="-" onclick="decrementQuantity()">
+                                <input type="text" id="quantity" name="quantity" value="1"  style="width: 3rem; text-align: center;pointer-events:none;">
+                                <input type="button" value="+" onclick="incrementQuantity()">
+                            </div>
+                            <button type="submit" name="action" value="add-<%=pro.getProID()%>">ADD TO CARD</button>
+                        </form >
 
                     </div>
                 </div>
-                <div style="width: 2rem;"></div>
-                <div class="col col-lg-8" id="product">
-                    <h5 class="text-center">NƯỚC HOA NAM</h5>
-                    <div id="sort">
-                        <p>Xếp theo:</p>
-                        <p>
-                            <select class="form-select" aria-label="Default select example"
-                                    style="width: 150px; height: 35px;">
-                                <option selected value="name">Theo tên</option>
-                                <option value="ascending">Giá tăng</option>
-                                <option value="descending ">Giá giảm</option>
-                            </select>
-                        </p>
-                    </div>
-                    <div class="detail">
-                        <div class="row">
-
-                            <c:forEach items="${a.takePerfumeList(1)}" var="e">
-                                <div class="card">
-                                    <img src="${e.img_path1}" class="card-img-top" alt="...">
-                                    <div class="card-body" id="card1">
-                                        <a href="MainController?open-product=${e.proID}">
-                                            <h6 class="card-title">${e.name}</h6>
-                                        </a>
-                                        <p class="card-text">${e.priceS}đ</p>
-                                    </div>
-                                    <form action="CartController" method="post" class="card-body">
-                                        <button type="submit" name="action" value="add-${e.proID}"class="btn">Add to cart</button>
-                                    </form>
-                                    
-                                </div>
-                            </c:forEach>
-
-
-
-
-                        </div>
-                    </div>
-                </div>
             </div>
+
+
+
 
         </main>
         <footer>
             <!-- place footer here -->
         </footer>
-
         <script>
-          function back() {
-                var banner = document.getElementById('carouselExampleControls');
+            function back() {
+                var banner = document.getElementById('path');
                 if (banner.style.zIndex == "-1") {
                     delay(300).then(() => banner.style.zIndex = "0");
                 } else {
@@ -251,8 +221,22 @@
             function delay(time) {
                 return new Promise(resolve => setTimeout(resolve, time));
             }
-        </script>
+            function setImageSource(id) {
+                var main = document.getElementById('img-main');
+                main.src = document.getElementById(id).src;
+            }
+            function decrementQuantity() {
+                var quantity = document.getElementById('quantity');
+                if (parseInt(quantity.value) > 0) {
+                    quantity.value = parseInt(quantity.value) - 1;
+                }
+            }
 
+            function incrementQuantity() {
+                var quantity = document.getElementById('quantity');
+                quantity.value = parseInt(quantity.value) + 1;
+            }
+        </script>
         <!-- Bootstrap JavaScript Libraries -->
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
                 integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">

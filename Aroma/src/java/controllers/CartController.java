@@ -8,9 +8,9 @@ package controllers;
 import data.Cart;
 import data.CookieMng;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,21 +25,50 @@ public class CartController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("cart.jsp").forward(request, response);
+        String cart = CookieMng.find("cart", request.getCookies());
+        if (cart.matches("")) {
+            Cookie c = new Cookie("cart", ":");
+            c.setMaxAge(60);
+            c.setPath("/");
+            response.addCookie(c);
+        }
+        response.sendRedirect("cart.jsp");
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         String action = request.getParameter("action");
-        String arr[] = action.split("-");
-        if (!arr[0].matches("add")) {
-            String cookie[] = CookieMng.find("user", request.getCookies()).split(":");
-            System.out.println(arr[0] + " " + arr[1] + " " + cookie[0]);
-            Cart.setData(arr[0], arr[1], cookie[0]);
-            response.sendRedirect("CartController");
-        } else {
-            
+        String cookie = CookieMng.find("cart", request.getCookies());
+        String arr[] = action.split("-"); // action - proId; 
+
+        if (!arr[0].matches("add") && !arr[0].matches("order")) {
+            String cart = Cart.setData(arr[0], arr[1], cookie);
+            Cookie c = new Cookie("cart", cart);
+            c.setMaxAge(60 * 60);
+            c.setPath("/");
+            response.addCookie(c);
+            response.sendRedirect("cart.jsp");
+        } else if (arr[0].matches("add")) {
+            String cart = Cart.addToCart(arr[1], cookie);
+            Cookie c = new Cookie("cart", cart);
+            c.setMaxAge(60 * 60);
+            c.setPath("/");
+            response.addCookie(c);
+//            request.setAttribute("notify", "block");
+            response.sendRedirect("cart.jsp");
+        } else if (request.getParameter("quantity") != null) {
+            String cart = Cart.addToCart(arr[1], cookie);
+            int quantity = Integer.parseInt(request.getParameter("quantity"));
+            for (int i = 0; i < quantity-1; i++) {
+                cart = Cart.addToCart(arr[1], cart);
+            }
+            Cookie c = new Cookie("cart", cart);
+            c.setMaxAge(60 * 60);
+            c.setPath("/");
+            response.addCookie(c);
+            response.sendRedirect("cart.jsp");
         }
     }
 
