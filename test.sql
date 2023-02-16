@@ -18,3 +18,13 @@ DELETE FROM Products where proID='P021';
 
 select * from Products
 order by price desc
+
+
+select size, color ,count(size) as gh
+from test t
+group by size, color
+
+
+select sum(count(size)) as gh
+	from test t
+	group by size, color

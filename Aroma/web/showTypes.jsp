@@ -3,7 +3,8 @@
     Created on : Feb 3, 2023, 1:24:20 PM
     Author     : dotie
 --%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
+<%@page import="modules.Product"%>
+<%@page import="java.util.LinkedList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="en">
@@ -21,7 +22,6 @@
         <!-- css customize -->
         <link rel="stylesheet" href="./resrc/css/showTypes.css">
 
-        <jsp:useBean id="a" class="data.ProMng" scope="request"/>
 
     </head>
 
@@ -192,14 +192,14 @@
                         <br><br>
                         <div style="margin-left: 1rem;">
                             <label for="minPriceRange">Min Price:</label>
-                            <input type="range" id="minPriceRange" min="100000" max="9000000" value="100000" oninput="updateMinValue(this.value)">
-                            <span id="minPriceValue">100000</span>
+                            <input type="range" id="minPriceRange" min="1000000" max="5000000" value="1000000" oninput="updateMinValue(this.value)">
+                            <span id="minPriceValue">1.000.000</span>
 
                             <br><br>
 
                             <label for="maxPriceRange">Max Price:</label>
-                            <input type="range" id="maxPriceRange" min="100000" max="9000000" value="9000000" oninput="updateMaxValue(this.value)">
-                            <span id="maxPriceValue">900000</span>
+                            <input type="range" id="maxPriceRange" min="1000000" max="5000000" value="5000000" oninput="updateMaxValue(this.value)">
+                            <span id="maxPriceValue">5.000.000</span>
                         </div>
 
                     </div>
@@ -212,33 +212,33 @@
                         <p>
                             <select id="select-sort" class="form-select" aria-label="Default select example"
                                     style="width: 150px; height: 35px;">
-                                <option selected value="name">Theo tên</option>
-                                <option value="ascending">Giá tăng</option>
-                                <option value="descending ">Giá giảm</option>
+                                <option ${name} value="name">Theo tên</option>
+                                <option ${ascending} value="ascending">Giá tăng</option>
+                                <option ${descending} value="descending ">Giá giảm</option>
                             </select>
                         </p>
                     </div>
                     <div class="detail">
                         <div class="row">
-
-                            <c:forEach items="${a.takePerfumeList(1)}" var="e">
-                                <div class="card">
-                                    <img src="${e.img_path1}" class="card-img-top" alt="...">
-                                    <div class="card-body" id="card1">
-                                        <a href="MainController?open-product=${e.proID}">
-                                            <h6 class="card-title">${e.name}</h6>
-                                        </a>
-                                        <p class="card-text">${e.priceS}đ</p>
-                                    </div>
-                                    <form action="CartController" method="post" class="card-body">
-                                        <button type="submit" name="action" value="add-${e.proID}"class="btn">Add to cart</button>
-                                    </form>
-
+                            <%
+                                LinkedList<Product> list = (LinkedList<Product>) request.getAttribute("list");
+                                for (Product p : list) {
+                            %>
+                            <div class="card">
+                                <img src="<%=p.getImg_path1()%>" class="card-img-top" alt="...">
+                                <div class="card-body" id="card1">
+                                    <a href="MainController?open-product=<%=p.getProID()%>">
+                                        <h6 class="card-title"><%=p.getName()%></h6>
+                                    </a>
+                                    <p class="card-text"><%=p.getPriceS()%>đ</p>
                                 </div>
-                            </c:forEach>
-
-
-
+                                <form action="CartController" method="post" class="card-body">
+                                    <button type="submit" name="action" value="add-<%=p.getProID()%>"class="btn">Add to cart</button>
+                                </form>
+                            </div>
+                            <%
+                                }
+                            %>
 
                         </div>
                     </div>
@@ -263,7 +263,8 @@
                 return new Promise(resolve => setTimeout(resolve, time));
             }
             document.getElementById("select-sort").onchange = function () {
-                window.location.assign("admin");
+                var value = document.getElementById("select-sort").value;
+                window.location.assign("showtype?sort=" + value +"&type=men");
             };
             function updateMinValue(val) {
                 document.getElementById("minPriceValue").innerHTML = val;

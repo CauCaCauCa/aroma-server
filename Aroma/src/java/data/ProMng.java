@@ -78,7 +78,7 @@ public class ProMng {
         return list;
     }
 
-    public LinkedList<Product> takePerfumeListSorted(int type, int amount, String sortDirect, String sortTo) {
+    public LinkedList<Product> takePerfumeListSorted(int type, String sortDirect, String sortTo) {
         SQLserver db = new SQLserver();
         String query;
         if (type == 0) {
@@ -91,8 +91,7 @@ public class ProMng {
             Statement Statement = db.connection.createStatement();
             ResultSet rs = Statement.executeQuery(query);
             System.out.println("get product success");
-            int count = 0;
-            while (rs.next() && count++ < amount) {
+            while (rs.next()) {
                 list.add(new Product(rs.getString(1).trim(),
                         rs.getString(2).trim(),
                         rs.getString(3).trim(),

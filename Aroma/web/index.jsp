@@ -219,7 +219,7 @@
 
 
                             <div class="card rounded-circle" id="more">
-                                <a href="showtype?type=men">
+                                <a href="showtype?type=men&sort=name">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"
                                          class="bi bi-arrow-right-circle" viewBox="0 0 16 16" style="margin: 0.4rem;">
                                     <path fill-rule="evenodd"
