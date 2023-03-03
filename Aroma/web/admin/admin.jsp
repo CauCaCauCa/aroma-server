@@ -17,6 +17,8 @@
         <!-- Add any CSS or JavaScript here -->
         <link rel="stylesheet" href="admin/css/admin.css">
         <jsp:useBean id="a" class="data.ProMng" scope="request"/>
+        <jsp:useBean id="admin" class="admin.AdminAction" scope="request"/>
+
     </head>
 
     <body>
@@ -26,7 +28,7 @@
                 <button onclick="changeDisplay('form1')">
                     <h2>Add a New Perfume</h2>
                 </button>
-                <button onclick="changeDisplay('form1')">
+                <button onclick="changeDisplay('form2')">
                     <h2>Manager Invoices</h2>
                 </button>
                 <br><br>
@@ -49,6 +51,40 @@
                     <input type="file" name="img3">
 
                     <button type="submit">Add Perfume</button>
+                </form>
+                <form action="AdminController" method="post" id="form2">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>PHONE</th>
+                                <th>NAME</th>
+                                <th>DETAIL</th>
+                                <th>TIME_ORDER</th>
+                                <th>ADDRESS</th>
+                                <th>PAYMENT</th>
+                                <th>ISINVOICE</th>
+                                <th>CONFIG</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <c:forEach items="${admin.invoices}" var="e">
+                                <tr>
+                                    <td>${e.phone}</td>
+                                    <td>${e.name}</td>
+                                    <td>${e.detail}</td>
+                                    <td>${e.time_order}</td>
+                                    <td>${e.address}</td>
+                                    <td>${e.payment}</td>
+                                    <td>${e.isInvoice}</td>
+                                    <td>
+                                        <button type="submit" name="action" value="setStatusInvoice-${e.phone}-${e.time_order}">Verify</button>
+                                        <button type="submit" name="action" value="removeInvoice-${e.phone}-${e.time_order}">Remove</button>
+                                    </td>
+                                </tr>
+                            </c:forEach>
+                        </tbody>
+                    </table>
                 </form>
             </section>
             <section>

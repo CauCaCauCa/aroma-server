@@ -11,9 +11,9 @@ import java.nio.charset.StandardCharsets;
 public class test {
 
     public static void main(String[] args) {
-        ProMng mng = new ProMng();
-        
-//        System.out.println(mng.takePerfumeListSorted(1, 10, "asc", "price"));
+       AdminAction test = new AdminAction();
+       
+        test.setStatusInvoices("0356415082", Long.parseLong("1676616299377"));
 
     }
 }

@@ -20,7 +20,7 @@
     <body>
         <%
             if (!CookieMng.find("user", request.getCookies()).matches("")) {
-                request.getRequestDispatcher("logout.jsp").forward(request, response);
+                request.getRequestDispatcher("../UserController").forward(request, response);
             }
 
         %>
@@ -61,7 +61,7 @@
                         <span class="txt1">
                             Don’t have an account?
                         </span>
-                        <a class="txt2" href="#">
+                        <a class="txt2" href="RegisterController">
                             Sign Up
                         </a>
                     </div>

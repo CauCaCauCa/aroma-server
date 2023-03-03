@@ -183,7 +183,7 @@
                     <div id="right" class="col col-lg-8">
                         <h3 class="fw-bold"><%=pro.getName()%></h3>
                         <p><span class="fw-bold">Trạng thái:</span>&nbsp;<%=status%></p>
-                        <p><span class="fw-bold">Giá:</span>&nbsp;<%=pro.getPrice()%></p>
+                        <p><span class="fw-bold">Giá:</span>&nbsp;<%=pro.getPriceS()%>đ</p>
                         <div id="paragraph">
                             <p><%=pro.getIntro()%></p>
                         </div>
@@ -227,7 +227,7 @@
             }
             function decrementQuantity() {
                 var quantity = document.getElementById('quantity');
-                if (parseInt(quantity.value) > 0) {
+                if (parseInt(quantity.value) > 1) {
                     quantity.value = parseInt(quantity.value) - 1;
                 }
             }

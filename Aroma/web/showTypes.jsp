@@ -1,11 +1,8 @@
-<%-- 
-    Document   : showTypes
-    Created on : Feb 3, 2023, 1:24:20 PM
-    Author     : dotie
---%>
-<%@page import="modules.Product"%>
-<%@page import="java.util.LinkedList"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%-- Document : showTypes Created on : Feb 3, 2023, 1:24:20 PM Author : dotie --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="modules.Product" %>
+<%@page import="java.util.LinkedList" %>
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
 <!doctype html>
 <html lang="en">
 
@@ -16,8 +13,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <!-- Bootstrap CSS v5.2.1 -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
-              integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+              rel="stylesheet"
+              integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+              crossorigin="anonymous">
 
         <!-- css customize -->
         <link rel="stylesheet" href="./resrc/css/showTypes.css">
@@ -34,12 +33,12 @@
                     <div class="col-lg-2" id="search">
 
                         <form action="/index.html" method="get" class="input-group">
-                            <input type="text" class="form-control radius-10" placeholder="search" aria-label="search"
-                                   name="search" aria-describedby="basic-addon2">
+                            <input type="text" class="form-control radius-10" placeholder="search"
+                                   aria-label="search" name="search" aria-describedby="basic-addon2">
 
                             <button type="submit" class="input-group-text radius-10" id="basic-addon2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                     class="bi bi-search" viewBox="0 0 16 16">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                     fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                                 <path
                                     d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
                                 </svg>
@@ -59,8 +58,8 @@
                     <div class="col-lg-2 " id="login">
 
                         <a href="LoginController" class="text-white">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
-                                 class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                                 fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
                             <path fill-rule="evenodd"
                                   d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z" />
                             <path fill-rule="evenodd"
@@ -72,8 +71,8 @@
                         <span>&nbsp;|&nbsp;</span>
 
                         <a href="cart.jsp" class="text-white">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
-                                 class="bi bi-cart-plus" viewBox="0 0 16 16">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
+                                 fill="currentColor" class="bi bi-cart-plus" viewBox="0 0 16 16">
                             <path
                                 d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z" />
                             <path
@@ -93,8 +92,9 @@
 
                         <div id="button-mobile" class="col col-sm-4">
                             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                                    aria-expanded="false" aria-label="Toggle navigation" onclick="back()">
+                                    data-bs-target="#navbarSupportedContent"
+                                    aria-controls="navbarSupportedContent" aria-expanded="false"
+                                    aria-label="Toggle navigation" onclick="back()">
                                 <span class="navbar-toggler-icon"></span>
                             </button>
                         </div>
@@ -104,8 +104,9 @@
                         </div>
 
                         <div id="login-mobile" class="col col-sm-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
-                                 class="bi bi-person-circle text-black-50" viewBox="0 0 16 16">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"
+                                 fill="currentColor" class="bi bi-person-circle text-black-50"
+                                 viewBox="0 0 16 16">
                             <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
                             <path fill-rule="evenodd"
                                   d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
@@ -120,12 +121,15 @@
                                 <div class="col-lg-2" id="search-mobile">
                                     <br>
                                     <form action="/index.html" method="get" class="input-group">
-                                        <input type="text" class="form-control radius-10" placeholder="search"
-                                               aria-label="search" name="search" aria-describedby="basic-addon2">
+                                        <input type="text" class="form-control radius-10"
+                                               placeholder="search" aria-label="search" name="search"
+                                               aria-describedby="basic-addon2">
 
-                                        <button type="submit" class="input-group-text radius-10" id="basic-addon2">
+                                        <button type="submit" class="input-group-text radius-10"
+                                                id="basic-addon2">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                 fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                                 fill="currentColor" class="bi bi-search"
+                                                 viewBox="0 0 16 16">
                                             <path
                                                 d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
                                             </svg>
@@ -169,10 +173,11 @@
 
                         <div id="search-brand">
                             <form class="d-flex" role="search">
-                                <input class="form-control me-2" type="search" placeholder="Tìm thương hiệu" aria-label="Search">
+                                <input class="form-control me-2" type="search" placeholder="Tìm thương hiệu"
+                                       aria-label="Search">
                                 <button type="submit" class="input-group-text radius-10" id="basic-addon2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                         class="bi bi-search" viewBox="0 0 16 16">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                         fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                                     <path
                                         d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
                                     </svg>
@@ -181,24 +186,26 @@
                         </div>
 
                         <!--                        <div id="result">
-                                                    <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-                                                    <label for="vehicle1"> I have a bike</label><br>
-                                                    <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
-                                                    <label for="vehicle2"> I have a car</label><br>
-                                                    <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                                                    <label for="vehicle3"> I have a boat</label><br><br>
-                                                </div>-->
+                                        <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                                        <label for="vehicle1"> I have a bike</label><br>
+                                        <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+                                        <label for="vehicle2"> I have a car</label><br>
+                                        <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+                                        <label for="vehicle3"> I have a boat</label><br><br>
+                                    </div>-->
 
                         <br><br>
                         <div style="margin-left: 1rem;">
                             <label for="minPriceRange">Min Price:</label>
-                            <input type="range" id="minPriceRange" min="1000000" max="5000000" value="1000000" oninput="updateMinValue(this.value)">
+                            <input type="range" id="minPriceRange" min="1000000" max="5000000"
+                                   value="1000000" oninput="updateMinValue(this.value)">
                             <span id="minPriceValue">1.000.000</span>
 
                             <br><br>
 
                             <label for="maxPriceRange">Max Price:</label>
-                            <input type="range" id="maxPriceRange" min="1000000" max="5000000" value="5000000" oninput="updateMaxValue(this.value)">
+                            <input type="range" id="maxPriceRange" min="1000000" max="5000000"
+                                   value="5000000" oninput="updateMaxValue(this.value)">
                             <span id="maxPriceValue">5.000.000</span>
                         </div>
 
@@ -220,26 +227,27 @@
                     </div>
                     <div class="detail">
                         <div class="row">
-                            <%
-                                LinkedList<Product> list = (LinkedList<Product>) request.getAttribute("list");
-                                for (Product p : list) {
-                            %>
-                            <div class="card">
-                                <img src="<%=p.getImg_path1()%>" class="card-img-top" alt="...">
-                                <div class="card-body" id="card1">
-                                    <a href="MainController?open-product=<%=p.getProID()%>">
-                                        <h6 class="card-title"><%=p.getName()%></h6>
-                                    </a>
-                                    <p class="card-text"><%=p.getPriceS()%>đ</p>
+                            
+                            <c:forEach items="${list}" var="p">
+                                <div class="card" value="${p.priceInt}">
+                                    <img src="${p.img_path2}" class="card-img-top" alt="...">
+                                    <div class="card-body" id="card1">
+                                        <a href="MainController?open-product=${p.proID}">
+                                            <h6 class="card-title">
+                                                ${p.name}
+                                            </h6>
+                                        </a>
+                                        <p class="card-text">
+                                            ${p.priceS}đ
+                                        </p>
+                                    </div>
+                                    <form action="CartController" method="post" class="card-body">
+                                        <button type="submit" name="action"
+                                                value="add-${p.proID}" class="btn">Add to
+                                            cart</button>
+                                    </form>
                                 </div>
-                                <form action="CartController" method="post" class="card-body">
-                                    <button type="submit" name="action" value="add-<%=p.getProID()%>"class="btn">Add to cart</button>
-                                </form>
-                            </div>
-                            <%
-                                }
-                            %>
-
+                            </c:forEach>
                         </div>
                     </div>
                 </div>
@@ -264,7 +272,7 @@
             }
             document.getElementById("select-sort").onchange = function () {
                 var value = document.getElementById("select-sort").value;
-                window.location.assign("showtype?sort=" + value +"&type=men");
+                window.location.assign("showtype?sort=" + value + "&type=men");
             };
             function updateMinValue(val) {
                 document.getElementById("minPriceValue").innerHTML = val;
@@ -274,6 +282,7 @@
                     maxPriceRange.value = val;
                     updateMaxValue(val);
                 }
+                updateList();
             }
 
             function updateMaxValue(val) {
@@ -284,16 +293,37 @@
                     minPriceRange.value = val;
                     updateMinValue(val);
                 }
+                updateList();
+            }
+
+            function updateList() {
+                var min = document.getElementById("minPriceRange").value;
+                var max = document.getElementById("maxPriceRange").value;
+                var arr = document.getElementsByClassName("card");
+
+                for (let index = 0; index < arr.length; index++) {
+                    console.log('max: ' + max);
+                    console.log('min' + min);
+                    console.log(arr[index].getAttribute('value'));
+                    if (arr[index].getAttribute('value') <= max && arr[index].getAttribute('value') >= min) {
+                        arr[index].style.display = 'block';
+                    } else {
+                        arr[index].style.display = 'none';
+                    }
+
+                }
             }
         </script>
 
         <!-- Bootstrap JavaScript Libraries -->
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-                integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+                integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+                crossorigin="anonymous">
         </script>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
-                integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+                integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
+                crossorigin="anonymous">
         </script>
     </body>
 

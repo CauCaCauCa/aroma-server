@@ -28,3 +28,19 @@ group by size, color
 select sum(count(size)) as gh
 	from test t
 	group by size, color
+
+UPDATE acc_login SET session = 'oke' WHERE [user] = 'admin'
+
+insert acc_login([user], password) values (N'acc1', N'123')
+
+SELECT i.phone, i.detail, i.time_order, i.address, i.payment, i.isInvoice, a.name FROM Invoice i JOIN AccountCustomer a on i.phone = a.phone ORDER BY time_order desc
+
+
+UPDATE Invoice SET isInvoice = 1 WHERE phone = '' AND time_order = ''
+
+DELETE FROM Invoice WHERE phone = '' AND time_order = ''
+
+
+
+insert AccountCustomer(phone, name, password, sessionKey) values ('0356415081', N'tein', N'pass', 0)
+

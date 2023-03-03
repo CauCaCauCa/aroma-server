@@ -51,11 +51,12 @@
             }
 
             #addPromt-box button {
-                width: 80%;
+                width: 40%;
                 height: 3rem;
                 border-radius: 5px;
                 font-weight: bold;
                 font-size: larger;
+                margin: 0 5% 0 5%;
             }
 
             /* animation */
@@ -73,10 +74,13 @@
 
     <body>
         <div id="addPromt">
-            <form action="LoginController" id="addPromt-box">
-                <img src="login/logout.png" alt="#"><br><br><br><br>
+            <form action="../LoginController" id="addPromt-box">
+                <img src="../login/logout.png" alt="#"><br><br><br><br>
                 <p>Bạn muốn đăng xuất?</p><br><br>
-                <button type="submit" name="logout" value="true">OK</button>
+               <div style="display: flex; flex-direction: row;">
+                 <button type="submit" name="logout" value="true">Có</button>
+                 <button type="submit" name="cancle-logout" value="true">Không</button>
+               </div>
             </form>
         </div>
 

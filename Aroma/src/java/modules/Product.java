@@ -50,7 +50,11 @@ public class Product {
     public double getPrice() {
         return price;
     }
-    
+
+    public int getPriceInt() {
+        return (int) price;
+    }
+
     public String getPriceS() {
         String s = "";
         int num = (int) price;
@@ -154,8 +158,6 @@ public class Product {
     public void setAmount(int amount) {
         this.amount = amount;
     }
-    
-    
 
     @Override
     public String toString() {

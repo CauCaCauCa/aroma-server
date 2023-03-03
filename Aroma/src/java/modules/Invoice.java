@@ -12,6 +12,7 @@ public class Invoice {
     private String address;
     private String payment;
     private String isInvoice;
+    private String name;
 
     public Invoice(String phone, String detail, long time_order, String address, String payment, String isInvoice) {
         this.phone = phone;
@@ -20,6 +21,16 @@ public class Invoice {
         this.address = address;
         this.payment = payment;
         this.isInvoice = isInvoice;
+    }
+
+    public Invoice(String phone, String detail, long time_order, String address, String payment, String isInvoice, String name) {
+        this.phone = phone;
+        this.detail = detail;
+        this.time_order = time_order;
+        this.address = address;
+        this.payment = payment;
+        this.isInvoice = isInvoice;
+        this.name = name;
     }
 
     public String getPhone() {
@@ -70,11 +81,13 @@ public class Invoice {
         this.payment = payment;
     }
 
+    public String getName() {
+        return name;
+    }
+
     @Override
     public String toString() {
         return "Invoice{" + "phone=" + phone + ", detail=" + detail + ", time_order=" + time_order + ", address=" + address + ", payment=" + payment + ", isInvoice=" + isInvoice + '}';
     }
-
-    
 
 }

@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.LinkedList;
+import modules.Invoice;
+
 /**
  *
  * @author dotie
@@ -116,7 +119,7 @@ public class SQLserver {
                 ResultSet rs = Statement.executeQuery(query);
 
                 while (rs.next()) {
-                   return rs.getString("name");
+                    return rs.getString("name");
                 }
             } catch (Exception e) {
                 System.out.println(e);
@@ -125,4 +128,34 @@ public class SQLserver {
         return null;
     }
 
+    public LinkedList<Invoice> getInvoices(String user) {
+        LinkedList<Invoice> list = new LinkedList<>();
+        try {
+            Statement Statement = connection.createStatement();
+            String query = "SELECT * FROM Invoice WHERE phone='" + user + "' ORDER BY time_order desc";
+
+            ResultSet rs = Statement.executeQuery(query);
+
+            while (rs.next()) {
+                Invoice inv = new Invoice(user, rs.getString(2), Long.parseLong(rs.getString(3)),
+                        rs.getString(4), rs.getString(5), rs.getString(6));
+                list.add(inv);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        System.out.println("get invoices");
+        return list;
+    }
+
+    public void addAcc(String phone, String username, String password) {
+        try {
+            Statement Statement = connection.createStatement();
+            String sql = "INSERT AccountCustomer(phone, name, password, sessionKey) values ('" + phone + "', N'" + username + "', N'" + password + "', 0)";
+            Statement.executeUpdate(sql);
+            System.out.println("add acc");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
 }

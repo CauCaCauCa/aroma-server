@@ -54,6 +54,22 @@ public class AdminController extends HttpServlet {
             }
             request.setAttribute("query", "");
             request.getRequestDispatcher("admin/admin.jsp").forward(request, response);
+        } else {
+            String action = request.getParameter("action");
+            String arr[] = action.split("-");
+            AdminAction todo = new AdminAction();
+            if (action != null) {
+                switch (arr[0]) {
+                    case "setStatusInvoice":
+                        todo.setStatusInvoices(arr[1], Long.parseLong(arr[2]));
+                        break;
+                    case "removeInvoice":
+                        todo.removeInvoices(arr[1], Long.parseLong(arr[2]));
+                        break;
+                }
+            }
+            request.setAttribute("query", "");
+            request.getRequestDispatcher("admin/admin.jsp").forward(request, response);
         }
     }
 

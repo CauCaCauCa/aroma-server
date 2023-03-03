@@ -19,15 +19,19 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        if (request.getParameter("logout") != null) { // clear cookie user login
-            Cookie c = new Cookie("user", "");
-            c.setMaxAge(0);
-            c.setPath("/");
-            response.addCookie(c);
-            response.sendRedirect("./");
-            return;
+        if (request.getParameter("cancle-logout") == null) {
+            if (request.getParameter("logout") != null) { // clear cookie user login
+                Cookie c = new Cookie("user", "");
+                c.setMaxAge(0);
+                c.setPath("/");
+                response.addCookie(c);
+                response.sendRedirect("./");
+                return;
+            }
+            request.getRequestDispatcher("login/login.jsp").forward(request, response);
+        } else {
+            request.getRequestDispatcher("user.jsp").forward(request, response);
         }
-        request.getRequestDispatcher("login/login.jsp").forward(request, response);
     }
 
     @Override
@@ -39,9 +43,9 @@ public class LoginController extends HttpServlet {
             if (db.AdminLogin(request.getParameter("user"), request.getParameter("password"))) {
                 request.setAttribute("query", "");
                 Cookie c = new Cookie("admin", "true");
-                c.setMaxAge(60*10);
+                c.setMaxAge(60 * 10);
                 c.setPath("/");
-                response.addCookie(c); 
+                response.addCookie(c);
                 request.getRequestDispatcher("admin/admin.jsp").forward(request, response);
             } else {
                 request.setAttribute("noice", "*wrong user or password");
