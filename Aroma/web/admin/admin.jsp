@@ -32,26 +32,26 @@
                     <h2>Manager Invoices</h2>
                 </button>
                 <br><br>
-                <form action="admin/admin.jsp" id="form1" style="display: none;">
+                <form action="AdminController" id="form1" method="post" enctype='multipart/form-data' style="display: none">
                     <!-- Add form fields for adding a new perfume, such as name, description, and image URL -->
-                    <input type="text" placeholder="Perfume Name" name="name">
-                    <input type="text" placeholder="Perfume Brand" name="brand">
-                    <input type="text" placeholder="Perfume Price" name="price">
-                    <input type="text" placeholder="Perfume Quantity" name="quantity">
+                    <input type="text" placeholder="Perfume Name" name="name" required>
+                    <input type="text" placeholder="Perfume Brand" name="brand" required>
+                    <input type="text" placeholder="Perfume Price" name="price" required>
+                    <input type="text" placeholder="Perfume Quantity" name="quantity" required>
                     <!-- tag use vietnamese here, be careful when get parameter -->
-                    <textarea placeholder="Perfume Description" name="address"></textarea> 
+                    <textarea placeholder="Perfume Description" name="description" required></textarea> 
                     <!-- ------------------------------------------------------ -->
-                    <input type="text" placeholder="Perfume Origin" name="origin">
-                    <input type="number" placeholder="Perfume ForGender 1:men, 2:women, 3:unisex" name="type">
-                    <input type="text" placeholder="Image_1 URL" name="img1_path">
-                    <input type="file" name="img1">
-                    <input type="text" placeholder="Image_2 URL" name="img2_path">
+                    <input type="text" placeholder="Perfume Origin" name="origin" required>
+                    <input type="number"placeholder="Perfume ForGender 1:men, 2:women, 3:unisex" name="type" required>
+                    <label for="img1">Image 1</label>
+                    <input type="file" name="img1" required>
+                    <label for="img2">Image 2</label>
                     <input type="file" name="img2">
-                    <input type="text" placeholder="Image_3 URL" name="img3_path">
+                    <label for="img3">Image 3</label>
                     <input type="file" name="img3">
-
-                    <button type="submit">Add Perfume</button>
+                    <button type="submit" name="action" value="createProduct-null">Add Perfume</button>
                 </form>
+                <br>
                 <form action="AdminController" method="post" id="form2">
                     <table>
                         <thead>

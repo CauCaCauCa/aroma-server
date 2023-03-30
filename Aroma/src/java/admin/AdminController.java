@@ -4,6 +4,7 @@ import data.CookieMng;
 import data.ProMng;
 import java.io.IOException;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author dotie
  */
+@MultipartConfig
 @WebServlet(name = "AdminController", urlPatterns = {"/AdminController"})
 public class AdminController extends HttpServlet {
 
@@ -65,6 +67,12 @@ public class AdminController extends HttpServlet {
                         break;
                     case "removeInvoice":
                         todo.removeInvoices(arr[1], Long.parseLong(arr[2]));
+                        break;
+                    case "createProduct":
+                        if (!todo.createProduct(request, response).matches("Create new product successfully.")) {
+                            response.sendRedirect("admin/upload.jsp?err=product-name-is-exist");
+                            return;
+                        }
                         break;
                 }
             }

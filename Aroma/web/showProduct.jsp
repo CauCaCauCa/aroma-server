@@ -4,6 +4,7 @@
     Author     : dotie
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="modules.Product"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!doctype html>
@@ -31,7 +32,7 @@
 
                     <div class="col-lg-2" id="search">
 
-                        <form action="/index.jsp" method="get" class="input-group">
+                        <form action="SearchController" method="get" class="input-group">
                             <input type="text" class="form-control radius-10" placeholder="search" aria-label="search"
                                    name="search" aria-describedby="basic-addon2">
 
@@ -156,38 +157,35 @@
             </div>
         </header>
         <main>
-            <%
-                Product pro = (Product) request.getAttribute("product");
-                String status = "hết hàng";
-                if (pro.getQuantity() > 0) {
-                    status = "còn hàng";
-                }
-            %>
+            <%String status = "hết hàng"; %>
+            <c:if test="${product.getQuantity() > 0}">
+                <%status = "còn hàng";%>
+            </c:if>
             <div id="section">
                 <div id="path">
-                    <p id="path1">Home > Men’s perfume > <%=pro.getName()%></p>
+                    <p id="path1">Home > Men’s perfume > ${product.getName()}</p>
                 </div>
 
                 <div id="body" class="row">
                     <div id="left" class="col col-lg-4">
-                        <img src="<%=pro.getImg_path1()%>" alt="#" id="img-main">
+                        <img src="${product.getImg_path1()}" alt="#" id="img-main">
                         <div id="box-list">
-                            <img src="<%=pro.getImg_path1()%>" alt="#" id="img1"
+                            <img src="${product.getImg_path1()}" alt="#" id="img1"
                                  onclick="setImageSource('img1')">
-                            <img src="<%=pro.getImg_path2()%>" alt="#" id="img2"
+                            <img src="${product.getImg_path2()}" alt="#" id="img2"
                                  onclick="setImageSource('img2')">
-                            <img src="<%=pro.getImg_path3()%>" alt="#" id="img3"
+                            <img src="${product.getImg_path3()}" alt="#" id="img3"
                                  onclick="setImageSource('img3')">
                         </div>
                     </div>
                     <div id="right" class="col col-lg-8">
-                        <h3 class="fw-bold"><%=pro.getName()%></h3>
+                        <h3 class="fw-bold">${product.getName()}</h3>
                         <p><span class="fw-bold">Trạng thái:</span>&nbsp;<%=status%></p>
-                        <p><span class="fw-bold">Giá:</span>&nbsp;<%=pro.getPriceS()%>đ</p>
+                        <p><span class="fw-bold">Giá:</span>&nbsp;${product.getPriceS()}đ</p>
                         <div id="paragraph">
-                            <p><%=pro.getIntro()%></p>
+                            <p>${product.getIntro()}</p>
                         </div>
-                        <p><span class="fw-bold">Xuất xứ:</span>&nbsp;<%=pro.getOrigin()%></p>
+                        <p><span class="fw-bold">Xuất xứ:</span>&nbsp;${product.getOrigin()}</p>
                         <form action="CartController" method="post">
                             <p class="fw-bold">Số lượng</p>
                             <div>
@@ -195,7 +193,7 @@
                                 <input type="text" id="quantity" name="quantity" value="1"  style="width: 3rem; text-align: center;pointer-events:none;">
                                 <input type="button" value="+" onclick="incrementQuantity()">
                             </div>
-                            <button type="submit" name="action" value="add-<%=pro.getProID()%>">ADD TO CARD</button>
+                            <button type="submit" name="action" value="add-${product.getProID()}">ADD TO CARD</button>
                         </form >
 
                     </div>

@@ -64,7 +64,6 @@ public class CartController extends HttpServlet {
             System.out.println(quantity);
             for (int i = 0; i < quantity-1; i++) {
                 cart = Cart.addToCart(arr[1], cart);
-                System.out.println(i);
             }
             
             Cookie c = new Cookie("cart", cart);

@@ -44,3 +44,8 @@ DELETE FROM Invoice WHERE phone = '' AND time_order = ''
 
 insert AccountCustomer(phone, name, password, sessionKey) values ('0356415081', N'tein', N'pass', 0)
 
+
+
+
+SELECT * FROM acc_filter
+

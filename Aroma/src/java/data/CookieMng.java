@@ -15,11 +15,11 @@ public class CookieMng {
         String cookie = "";
         if (cookies != null) {
             for (Cookie c : cookies) {
-            if (c.getName().matches(name)) {
-                cookie += c.getValue();
-                break;
+                if (c.getName().matches(name)) {
+                    cookie += c.getValue();
+                    break;
+                }
             }
-        }
         }
         return cookie;
     }

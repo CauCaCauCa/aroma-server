@@ -10,6 +10,11 @@ import modules.Product;
  * @author dotie
  */
 public class ProMng {
+    
+    public static void main(String[] args) {
+        ProMng mng = new ProMng();
+        System.out.println(mng.takeBrandID("Yves Saint Laurent"));
+    }
 
     public LinkedList<Product> takePerfumeList(int type) {
         SQLserver db = new SQLserver();
@@ -146,6 +151,23 @@ public class ProMng {
             System.out.println("get Brand success");
             while (rs.next()) {
                 return rs.getString("name");
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+    
+    public String takeBrandID(String name) {
+        SQLserver db = new SQLserver();
+
+        String query = "select brandID from Brand where name='" + name+ "'";
+        try {
+            Statement Statement = db.connection.createStatement();
+            ResultSet rs = Statement.executeQuery(query);
+            System.out.println("get BrandID success");
+            while (rs.next()) {
+                return rs.getString("brandID");
             }
         } catch (Exception e) {
             System.out.println(e);

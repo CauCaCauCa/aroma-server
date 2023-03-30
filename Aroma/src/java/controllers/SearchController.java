@@ -1,9 +1,11 @@
 package controllers;
 
+import data.CookieMng;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,9 +19,20 @@ public class SearchController extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String query = request.getParameter("query");
-        request.setAttribute("query", query);
-        request.getRequestDispatcher("admin/admin.jsp").forward(request, response);
+        
+        Cookie c[] = request.getCookies();
+        System.out.println(c.length);
+        
+        
+        if (!CookieMng.find("admin", request.getCookies()).matches("")) {
+            String query = request.getParameter("query");
+            request.setAttribute("query", query);
+            request.getRequestDispatcher("admin/admin.jsp").forward(request, response);
+        } else {
+            String query = request.getParameter("search");
+            request.setAttribute("query", query);
+            request.getRequestDispatcher("showSearch.jsp").forward(request, response);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

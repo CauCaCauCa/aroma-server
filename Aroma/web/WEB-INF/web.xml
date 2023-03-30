@@ -5,4 +5,12 @@
             30
         </session-timeout>
     </session-config>
+    
+<!--    <context-param> 
+        <description>Location to store uploaded img</description> 
+        <param-name>perfume-path</param-name> 
+        <param-value>
+            C:\Users\dotie\Documents\NetBeansProjects\aroma-server\Aroma\build\web\perfume
+        </param-value> 
+    </context-param>-->
 </web-app>

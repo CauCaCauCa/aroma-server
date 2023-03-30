@@ -32,7 +32,7 @@
 
                     <div class="col-lg-2" id="search">
 
-                        <form action="/index.html" method="get" class="input-group">
+                        <form action="SearchController" method="get" class="input-group">
                             <input type="text" class="form-control radius-10" placeholder="search"
                                    aria-label="search" name="search" aria-describedby="basic-addon2">
 
